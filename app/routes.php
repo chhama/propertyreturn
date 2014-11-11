@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', ['uses'=>'HomeController@home','as'=>'home']);
+Route::resource('sessions', 'SessionsController');
+Route::get('property/create', array('uses'=>'PropertyController@create','as'=>'property.create'));
+
+Route::resource('property','PropertyController');
