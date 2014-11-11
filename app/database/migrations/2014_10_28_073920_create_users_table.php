@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration {
 			$table->string('pay_band_and_grade_pay');
 			$table->string('present_place_of_posting');
 			$table->enum('user_type',['superadmin','admin','employee']);
+			$table->string('remember_token');
+			$table->string('password');
 			$table->timestamps();
 		});
 		
