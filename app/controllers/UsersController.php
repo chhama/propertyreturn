@@ -82,5 +82,22 @@ class UsersController extends \BaseController {
 		//
 	}
 
+	public function login(){
+		$attempt = Auth::attempt([
+				'username' => Input::get('username'),
+				'password' => Input::get('password')
+			]);
+
+		if ($attempt) return Redirect::intended('property/create');
+		else
+			return Redirect::to('/')->with(['flash_message'=>'Invalid Username or Password','msgtype'=>'danger'])->withInput();
+	}
+
+	public function logout(){
+		Auth::logout();
+
+		return Redirect::home();
+	}
+
 
 }

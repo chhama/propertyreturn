@@ -4,7 +4,7 @@
 			DB::table('users')->delete();
 
 			User::create(array(
-					'emp_id' => '1',
+					'username' => 'admin',
 					'remember_token' => '',
 					'password' => Hash::make('pass')
 				));
