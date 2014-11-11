@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('present_post');
 			$table->string('pay_band_and_grade_pay');
 			$table->string('present_place_of_posting');
-			$table->enum('user_type',['superadmin','admin','employee'])
+			$table->enum('user_type',['superadmin','admin','employee']);
 			$table->timestamps();
 		});
 		
@@ -37,7 +37,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('users');
 	}
 
 }

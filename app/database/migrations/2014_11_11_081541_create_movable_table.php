@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImmoveablePropertyTable extends Migration {
+class CreateMovableTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateImmoveablePropertyTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('immovable',function(Blueprint $table){
+		Schema::create('movable',function(Blueprint $table){
 			$table->increments('id');
 			$table->string('emp_id');
 			$table->string('service');
@@ -22,7 +22,6 @@ class CreateImmoveablePropertyTable extends Migration {
 			$table->string('present_place_of_posting',100);
 			$table->longtext('property');
 			$table->timestamps();
-		});
 	}
 
 	/**
@@ -32,7 +31,7 @@ class CreateImmoveablePropertyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('immovable');
+		Schema::drop('movable');
 	}
 
 }
