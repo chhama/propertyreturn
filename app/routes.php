@@ -16,3 +16,6 @@ Route::resource('sessions', 'SessionsController');
 Route::get('property/create', array('uses'=>'PropertyController@create','as'=>'property.create'));
 
 Route::resource('property','PropertyController');
+Route::resource('users','UsersController');
+Route::post('users/login', array('uses'=>'UsersController@login','as'=>'users.login'));
+

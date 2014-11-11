@@ -63,16 +63,19 @@
                         <a href="#view">View</a>
                     </li>
                     <li class="page-scroll">
-                        {{Form::open(['route'=>'sessions.store','class'=>'navbar-form navbar-right'])}}
+                        {{Form::open(['route'=>'users.login','class'=>'navbar-form navbar-right'])}}
                         <div class='form-group'>
-                            {{Form::text('username','',['class'=>'form-control form-control-sm','size'=>'10'])}}
-                            {{Form::password('password',['class'=>'form-control','size'=>'10'])}}
+                            {{Form::text('username','',['class'=>'form-control form-control-sm','size'=>'10','required'])}}
+                            {{Form::password('password',['class'=>'form-control','size'=>'10','required'])}}
                         </div>
                         {{Form::submit('Login',['class'=>'btn btn-default'])}}
-                        {{Form::close()}}                    
+                        {{Form::close()}}                
                     </li>
 
                 </ul>
+                @if(Session::has('flash_message'))
+                    {{ Session::get('flash_message') }}
+                @endif
             </div>
             <!-- /.navbar-collapse -->
         </div>
