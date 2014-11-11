@@ -10,18 +10,20 @@
                     <div class="intro-text">
                         <span class="name">Immovable Property</span>
                         <hr class="star-light">
-                        <table class="table table-hover">
+                        <div class="hap">
+                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>Name</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td></td>
+                                    <td>saa</td>
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
