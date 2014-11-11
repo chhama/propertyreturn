@@ -14,7 +14,7 @@ class CreateImmoveablePropertyTable extends Migration {
 	{
 		Schema::create('immovable',function(Blueprint $table){
 			$table->increments('id');
-			$table->string('emp_id');
+			$table->string('users_id');
 			$table->string('service');
 			$table->integer('basic_pay');
 			$table->string('present_post');
