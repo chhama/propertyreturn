@@ -49,11 +49,15 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            {{Form::button('Submit',['class'=>'btn btn-success form-control'])}}
                             </div>
                         {{Form::close()}}
                     </div>
                 </div>
+
             </div>
+             Note 1. <br>
+                In this form, information may be given regarding intems like 
         </div>
     </header>
     
@@ -134,7 +138,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="success" id="about">
+  <!--   <section class="success" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -152,10 +156,10 @@
                
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
-    <section id="view">
+<!--     <section id="view">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -165,9 +169,9 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+ -->                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <!-- <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
@@ -207,5 +211,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 @stop
