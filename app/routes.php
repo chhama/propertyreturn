@@ -13,7 +13,7 @@
 
 Route::get('/', ['uses'=>'HomeController@home','as'=>'home']);
 Route::resource('sessions', 'SessionsController');
-Route::get('property/create', array('uses'=>'PropertyController@create','as'=>'property.create'));
+Route::get('returns.create', array('uses'=>'PropertyController@create','as'=>'returns.create'));
 
 Route::resource('property','PropertyController');
 Route::resource('users','UsersController');

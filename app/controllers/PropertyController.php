@@ -9,7 +9,7 @@ class PropertyController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('property.index');
 	}
 
 
@@ -20,6 +20,8 @@ class PropertyController extends \BaseController {
 	 */
 	public function create()
 	{
+				// return View::make('property.create');
+
 		return View::make('returns.create');
 	}
 

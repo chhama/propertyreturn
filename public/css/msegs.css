@@ -103,6 +103,14 @@ header .intro-text .name {
     font-weight: 700;
 }
 
+header .intro-text .formheader {
+    display: block;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+}
+
 header .intro-text .skills {
     font-size: 1.25em;
     font-weight: 300;
@@ -446,4 +454,47 @@ footer .footer-below {
 
 .navbar-form .form-control .small-input {
     width:14%;
+}
+
+table>tbody>tr#returnstr{
+    background-color:transparent;
+    color:#8a7;
+    font-size: 1.1em;
+}
+
+table>thead>tr#returnstr{
+    font-size: 0.80em;
+    font-weight: bold;
+
+}
+
+.table>thead>tr#returnstr>th.proptd{
+    text-align: center;
+    vertical-align: middle;
+}
+
+header.form {
+    text-align: center;
+    color: #000;
+    background: #fff;
+    padding-left: 1px;
+}
+
+header.form>.container-fluid {
+    padding-top: 130px;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+  background-color: #f9f9f9;
+}
+
+.table-striped > thead > tr > td,
+.table-striped > thead > tr > th {
+  background-color: #dee;
+}
+
+.table-responsive {
+    max-width: 1434px;
+    overflow: auto;
 }

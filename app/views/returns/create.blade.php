@@ -3,32 +3,61 @@
 @section('container')
 
     <!-- Header -->
-    <header>
-        <div class="container">
+    <header class="form">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name">Immovable Property</span>
-                        <hr class="star-light">
-                        <div class="hap">
-                         <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>saa</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>
+                        <span class="formheader">Immovable Property</span>
+                        <!-- <hr class="star-light"> -->
+                        {{Form::open()}}
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-bordered">
+                                <thead>
+                                    <tr id='returnstr'>
+                                        <th class="proptd">Name of Dist. Sub.Division Taluk and Village in which property is situated (Full location and postal address)</th>
+                                        <th class="proptd">Name & Details of properties (in case of land, area & pass no. & date/but in case of buildings, type of building with specification to be indicated)</th>
+                                        <th class="proptd">Cost of acquirement of land with date/cost of the building constn. with date of starting the work and date of completion.</th>
+                                        <th class="proptd">Present Value</th>
+                                        <th class="proptd">Name of Owner. If not in own name, state in whose name held and his/her relationship to the Govt. Servant</th>
+                                        <th class="proptd">How acquired whether by purchase, lease, mortgate, inheritance, gift or otherwise, and eate of acquisition & name with details of person(s) from whom acquired.</th>
+                                        <th class="proptd">Annual income from the property</th>
+                                        <th class="proptd">Remarks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        {{Form::close()}}
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    
+    
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">

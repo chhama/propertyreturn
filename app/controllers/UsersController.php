@@ -88,7 +88,7 @@ class UsersController extends \BaseController {
 				'password' => Input::get('password')
 			]);
 
-		if ($attempt) return Redirect::intended('property/create');
+		if ($attempt) return Redirect::to('returns.create');
 		else
 			return Redirect::to('/')->with(['flash_message'=>'Invalid Username or Password','msgtype'=>'danger'])->withInput();
 	}
