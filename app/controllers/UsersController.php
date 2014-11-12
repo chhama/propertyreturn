@@ -20,7 +20,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.create');
 	}
 
 
@@ -67,8 +67,8 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		$userById = User::find($id);
-		//return View::make('users.edit')->with(array('userById'=>$userById));
-		return View::make('users.edit');	
+		return View::make('users.edit')->with(array('userById'=>$userById));
+		// return View::make('users.edit');	
 	}
 
 
@@ -112,7 +112,7 @@ class UsersController extends \BaseController {
 				'password' => Input::get('password')
 			]);
 
-		if ($attempt) return Redirect::to('returns.create');
+		if ($attempt) return Redirect::to('returns/create');
 		else
 			return Redirect::to('/')->with(['flash_message'=>'Invalid Username or Password','msgtype'=>'danger'])->withInput();
 	}

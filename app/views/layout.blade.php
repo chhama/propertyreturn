@@ -12,13 +12,11 @@
     <title>Property Returns</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    {{ HTML::Style('css/bootstrap.min.css') }}
     <!-- Custom CSS -->
-    <link href="css/msegs.css" rel="stylesheet">
-
+    {{ HTML::Style('css/msegs.css') }}
     <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    {{ HTML::Style('font-awesome-4.1.0/css/font-awesome.min.css') }}
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -374,23 +372,21 @@
     </div>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    {{ HTML::Script('js/jquery.js') }}
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+    {{ HTML::Script('js/bootstrap.min.js') }}
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
+   
+    {{ HTML::Script('js/classie.js') }}
+    {{ HTML::Script('js/cbpAnimatedHeader.js') }}
     <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
+    {{ HTML::Script('js/jqBootstrapValidation.js') }}
     <!-- <script src="js/contact_me.js"></script> -->
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/msegs.js"></script>
-
+    {{ HTML::Script('js/msegs.js') }}
     @yield('extrajs')
 
 </body>
