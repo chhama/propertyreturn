@@ -51,7 +51,6 @@
                     @if(Auth::check())
                     <li class="page-scroll">
                         <a href="{{ URL::route('users.index')}}">Users</a>
-                        <a href="{{ URL::route('users.edit', 1)}}" class="btn btn-xs btn-success tooltip-top" title="Edit Test"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;
                     </li>
                     <li class="page-scroll">
                         <a href="{{ URL::route('logout')}}" 'class'='btn btn-default'>Logout</a>
