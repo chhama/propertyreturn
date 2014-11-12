@@ -66,7 +66,9 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$userById = User::find($id);
+		//return View::make('users.edit')->with(array('userById'=>$userById));
+		return View::make('users.edit');	
 	}
 
 
@@ -78,7 +80,18 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::find($id);
+		$user->emp_id 			= Input::get('emp_id');
+		$user->name 			= Input::get('name');
+		$user->mobile 			= Input::get('mobile');
+		$user->username 		= Input::get('username');
+		$user->password 		= Hash::make(Input::get('password'));
+		$user->user_type 		= Input::get('user_type');
+		$user->entry_into_service	= Input::get('entry_into_service');
+		$user->superannuation_date	= Input::get('superannuation_date');
+		$user->remember_token 	= Input::get('_token');
+		if($user->save())
+			return Redirect::back()->with(['flash_message'=>'User successfully created','msgtype'=>'success']);
 	}
 
 
