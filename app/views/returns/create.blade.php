@@ -61,7 +61,7 @@
 
             </div>
              Note 1. <br>
-                In this form, information may be given regarding intems like 
+                In this form, information may be given regarding items like  
         </div>
     </header>
     
@@ -84,7 +84,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/icons/cabin.png" class="img-responsive" alt="">
+                        <img src="../img/icons/cabin.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -94,7 +94,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/icons/cake.png" class="img-responsive" alt="">
+                        <img src="../img/icons/cake.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -104,7 +104,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/icons/circus.png" class="img-responsive" alt="">
+                        <img src="../img/icons/circus.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -114,7 +114,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/icons/game.png" class="img-responsive" alt="">
+                        <img src="../img/icons/game.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -124,7 +124,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/icons/safe.png" class="img-responsive" alt="">
+                        <img src="../img/icons/safe.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -134,7 +134,7 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="img/icons/submarine.png" class="img-responsive" alt="">
+                        <img src="../img/icons/submarine.png" class="img-responsive" alt="">
                     </a>
                 </div>
             </div>
