@@ -9,7 +9,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('users.index');
 	}
 
 
@@ -31,7 +31,18 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$user = new User();
+		$user->emp_id 			= Input::get('emp_id');
+		$user->name 			= Input::get('name');
+		$user->mobile 			= Input::get('mobile');
+		$user->username 		= Input::get('username');
+		$user->password 		= Hash::make(Input::get('password'));
+		$user->user_type 		= Input::get('user_type');
+		$user->entry_into_service	= Input::get('entry_into_service');
+		$user->superannuation_date	= Input::get('superannuation_date');
+		$user->remember_token 	= Input::get('_token');
+		if($user->save())
+			return Redirect::back()->with(['flash_message'=>'User successfully created','msgtype'=>'success']);
 	}
 
 
@@ -95,8 +106,7 @@ class UsersController extends \BaseController {
 
 	public function logout(){
 		Auth::logout();
-
-		return Redirect::home();
+		return Redirect::to('/');
 	}
 
 

@@ -50,6 +50,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::check())
+                    <li class="page-scroll">
+                        <a href="{{ URL::route('users.index')}}">Users</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{{ URL::route('logout')}}" 'class'='btn btn-default'>Logout</a>
+                    </li>
+                    @else
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
@@ -63,7 +71,7 @@
                         <a href="#view">View</a>
                     </li>
                     <li class="page-scroll">
-                        {{Form::open(['route'=>'users.login','class'=>'navbar-form navbar-right'])}}
+                        {{Form::open(['route'=>'login','class'=>'navbar-form navbar-right'])}}
                         <div class='form-group'>
                             {{Form::text('username','',['class'=>'form-control form-control-sm','size'=>'10','required'])}}
                             {{Form::password('password',['class'=>'form-control','size'=>'10','required'])}}
@@ -71,7 +79,7 @@
                         {{Form::submit('Login',['class'=>'btn btn-default'])}}
                         {{Form::close()}}                
                     </li>
-
+                    @endif
                 </ul>
                 @if(Session::has('flash_message'))
                     {{ Session::get('flash_message') }}
