@@ -391,6 +391,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/msegs.js"></script>
 
+    @yield('extrajs')
+
 </body>
 
 </html>

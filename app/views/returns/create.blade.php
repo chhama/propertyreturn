@@ -1,7 +1,8 @@
 @extends('layout')
 
-@section('container')
 
+
+@section('container')
     <!-- Header -->
     <header class="form">
         <div class="container-fluid">
@@ -23,21 +24,23 @@
                                         <th class="proptd">How acquired whether by purchase, lease, mortgate, inheritance, gift or otherwise, and eate of acquisition & name with details of person(s) from whom acquired.</th>
                                         <th class="proptd">Annual income from the property</th>
                                         <th class="proptd">Remarks</th>
+                                        <th class="proptd">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'3'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'3'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'3'])}}</td>
                                         <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'4'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'4'])}}</td>
                                         <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'3'])}}</td>
+                                        <td class="proptd">{{Form::button('',['class'=>'glyphicon glyphicon-plus alert-success','id'=>'btn_addrow'])}}Add</td>
                                     </tr>
-                                    <tr>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
+                                <!--     <tr>
+                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'3'])}}</td>
                                         <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'6'])}}</td>
                                         <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
                                         <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
@@ -46,7 +49,8 @@
                                         <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
                                         <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'6'])}}</td>
 
-                                    </tr>
+                                    </tr> -->
+
                                 </tbody>
                             </table>
                             {{Form::button('Submit',['class'=>'btn btn-success form-control'])}}
@@ -136,6 +140,18 @@
             </div>
         </div>
     </section>
+
+    @section('extrajs')
+    <script language="javascript">
+        $(function() {
+            $("#btn_addrow").click(function() {
+                alert('all');
+            });
+     });
+    </script>
+    @stop
+
+
 
     <!-- About Section -->
   <!--   <section class="success" id="about">
