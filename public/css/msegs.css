@@ -456,21 +456,26 @@ footer .footer-below {
     width:14%;
 }
 
-table>tbody>tr#returnstr{
+table>tbody>tr#returnstr {
     background-color:transparent;
     color:#8a7;
     font-size: 1.1em;
 }
 
-table>thead>tr#returnstr{
+table>thead>tr#returnstr {
     font-size: 0.80em;
     font-weight: bold;
 
 }
 
-.table>thead>tr#returnstr>th.proptd{
+.table>thead>tr#returnstr>th {
     text-align: center;
     vertical-align: middle;
+    font-weight: normal;
+}
+
+table>tbody>tr>td>textarea {
+    border-color: #ecf0f1;
 }
 
 header.form {

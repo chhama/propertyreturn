@@ -3,6 +3,12 @@
 
 
 @section('container')
+    <script language="javascript">
+          function removeRow(rnum) {
+            $('#rowNum'+rnum).remove();
+    }
+    </script>
+
     <!-- Header -->
     <header class="form">
         <div class="container-fluid">
@@ -11,33 +17,44 @@
                     <div class="intro-text">
                         <span class="formheader">Immovable Property</span>
                         <!-- <hr class="star-light"> -->
-                        {{Form::open()}}
+                        {{Form::open(['url'=>'returns.store','method'=>'POST','id'=>'immovable_form'])}}
                         <div class="table-responsive">
-                            <table class="table table-hover table-striped table-bordered">
+                            <table class="table table-hover table-striped table-bordered" id="maintable">
                                 <thead>
                                     <tr id='returnstr'>
-                                        <th class="proptd">Name of Dist. Sub.Division Taluk and Village in which property is situated (Full location and postal address)</th>
-                                        <th class="proptd">Name & Details of properties (in case of land, area & pass no. & date/but in case of buildings, type of building with specification to be indicated)</th>
-                                        <th class="proptd">Cost of acquirement of land with date/cost of the building constn. with date of starting the work and date of completion.</th>
-                                        <th class="proptd">Present Value</th>
-                                        <th class="proptd">Name of Owner. If not in own name, state in whose name held and his/her relationship to the Govt. Servant</th>
-                                        <th class="proptd">How acquired whether by purchase, lease, mortgate, inheritance, gift or otherwise, and eate of acquisition & name with details of person(s) from whom acquired.</th>
-                                        <th class="proptd">Annual income from the property</th>
-                                        <th class="proptd">Remarks</th>
-                                        <th class="proptd">Action</th>
+                                        <th>Name of Dist. Sub.Division Taluk and Village in which property is situated (Full location and postal address)</th>
+                                        <th>Name & Details of properties (in case of land, area & pass no. & date/but in case of buildings, type of building with specification to be indicated)</th>
+                                        <th>Cost of acquirement of land with date/cost of the building constn. with date of starting the work and date of completion.</th>
+                                        <th>Present Value</th>
+                                        <th>Name of Owner. If not in own name, state in whose name held and his/her relationship to the Govt. Servant</th>
+                                        <th>How acquired whether by purchase, lease**, mortgate, inheritance, gift or otherwise, and eate of acquisition & name with details of person(s) from whom acquired.</th>
+                                        <th>Annual income from the property</th>
+                                        <th>Remarks</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr id='returnstr'>
+                                        <th>1</th>
+                                        <th>2</th>
+                                        <th>3</th>
+                                        <th>4</th>
+                                        <th>5</th>
+                                        <th>6</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'3'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'3'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'3'])}}</td>
-                                        <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'4'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'4'])}}</td>
-                                        <td class="proptd">{{Form::text('subdivision','',['size'=>'15'])}}</td>
-                                        <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'15','rows'=>'3'])}}</td>
-                                        <td class="proptd">{{Form::button('',['class'=>'glyphicon glyphicon-plus alert-success','id'=>'btn_addrow'])}}Add</td>
+                                        <td>{{Form::textarea('add_subdivision','',['cols'=>'20','rows'=>'3','id'=>'add_subdivision'])}}</td>
+                                        <td>{{Form::textarea('add_prop_details','',['cols'=>'20','rows'=>'3','id'=>'add_prop_details'])}}</td>
+                                        <td>{{Form::textarea('add_cost','',['cols'=>'15','rows'=>'3','id'=>'add_cost'])}}</td>
+                                        <td>{{Form::text('add_present_value','',['size'=>'15','id'=>'add_present_value'])}}</td>
+                                        <td>{{Form::textarea('add_owner','',['cols'=>'15','rows'=>'3','id'=>'add_owner'])}}</td>
+                                        <td>{{Form::textarea('add_how_acquired','',['cols'=>'15','rows'=>'3','id'=>'add_how_acquired'])}}</td>
+                                        <td>{{Form::text('add_annual_income','',['size'=>'15','id'=>'add_annual_income'])}}</td>
+                                        <td>{{Form::textarea('add_remarks','',['cols'=>'15','rows'=>'3','id'=>'add_remarks'])}}</td>
+                                        <td>{{Form::button('',['class'=>'glyphicon glyphicon-plus-sign alert-success','id'=>'btn_addrow'])}}Add Row</td>
                                     </tr>
                                 <!--     <tr>
                                         <td class="proptd">{{Form::textarea('subdivision','',['cols'=>'20','rows'=>'3'])}}</td>
@@ -53,15 +70,26 @@
 
                                 </tbody>
                             </table>
-                            {{Form::button('Submit',['class'=>'btn btn-success form-control'])}}
+                            {{Form::button('Submit',['class'=>'btn btn-primary form-control','style'=>'width:120px;'])}}
                             </div>
                         {{Form::close()}}
                     </div>
                 </div>
 
             </div>
+            <hr>
+            In applicable clause to be struck out,<br>
+            * in case where it is not possible to assess the value accurately the approximate value in relation to present conditions may be indicated. <br>
+            ** Includes short term list also. <p></p>
              Note 1. <br>
-                In this form, information may be given regarding items like  
+                In this form, information may be given regarding items like (a)Jewellery owned by him (total value); (b)Silver and other precious stones
+                owned by him not forming part of jeweler (total value); (c)(i)Motor Cars,(ii)Scooter,Motor Cycles (iii) Refrigerator/all conditions, (iv)Radios/
+                Radiograms/Television set and any other articles, the value of which individually exceeds Rs.10,000/- (d)Value of items of movable property individually
+                worth less than Rs.10,000 other than articles of daily use such as clothes, books, utensils, crokery etc. added together as lump sum. <p></p>
+            Note 2. <br>
+                In column 5 may be indicated whether the property was acquired by purchase, inheritance, gift or otherwise. <p></p>
+            Note 3. <br>
+                In column 6 particulars regarding sanction obtained or report made in respect of various transactions given. <p></p>
         </div>
     </header>
     
@@ -144,9 +172,30 @@
     @section('extrajs')
     <script language="javascript">
         $(function() {
+            var rowNum = 0;
+            function addrow() {
+                rowNum++;
+                var row = '<tr id="rowNum'+rowNum+'"><td><textarea name="add_subdivision[]" cols = "20" rows= "3">'+immovable_form.add_subdivision.value+'</textarea></td><td><textarea name="add_prop_details[]" cols = "20" rows= "3">'+immovable_form.add_prop_details.value+'</textarea></td><td><textarea name="add_cost[]" cols = "15" rows= "3">'+immovable_form.add_cost.value+'</textarea></td><td><input type="text" name="add_present_value[]" value="'+immovable_form.add_present_value.value+'" size="15"></td><td><textarea name="add_owner[]" cols = "15" rows= "3">'+immovable_form.add_owner.value+'</textarea></td><td><textarea name="add_how_acquired[]" cols = "15" rows= "3">'+immovable_form.add_how_acquired.value+'</textarea></td><td><input type="text" name="add_annual_income[]" value="'+immovable_form.add_annual_income.value+'" size="15"></td><td><textarea name="add_remarks[]" cols = "15" rows= "3">'+immovable_form.add_remarks.value+'</textarea></td><td><button class="glyphicon glyphicon-remove-circle alert-danger" onclick="removeRow('+rowNum+')"></button>Remove</td></tr>';
+                // $('#qtycounter').val(99);
+                $("#maintable tbody tr:last-child").before(row);
+
+                $("#add_subdivision").val('');
+                $("#add_prop_details").val('');
+                $("#add_cost").val('');
+                $("#add_present_value").val('');
+                $("#add_owner").val('');
+                $("#add_how_acquired").val('');
+                $("#add_annual_income").val('');
+                $("#add_remarks").val('');
+            }
+
             $("#btn_addrow").click(function() {
-                alert('all');
+                // alert('all');
+                addrow($(''));
+
             });
+
+          
      });
     </script>
     @stop
