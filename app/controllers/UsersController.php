@@ -9,7 +9,12 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('users.index');
+		$userAll = User::orderBy('name')->paginate();
+		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
+		return View::make('users.index')->with(array(
+										'userAll'	=> $userAll,
+										'index'		=> $index
+										));
 	}
 
 
@@ -85,11 +90,9 @@ class UsersController extends \BaseController {
 		$user->name 			= Input::get('name');
 		$user->mobile 			= Input::get('mobile');
 		$user->username 		= Input::get('username');
-		$user->password 		= Hash::make(Input::get('password'));
 		$user->user_type 		= Input::get('user_type');
 		$user->entry_into_service	= Input::get('entry_into_service');
 		$user->superannuation_date	= Input::get('superannuation_date');
-		$user->remember_token 	= Input::get('_token');
 		if($user->save())
 			return Redirect::back()->with(['flash_message'=>'User successfully created','msgtype'=>'success']);
 	}
@@ -103,7 +106,8 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+		return Redirect::route('users.index');
 	}
 
 	public function login(){
