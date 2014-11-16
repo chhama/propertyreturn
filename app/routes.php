@@ -20,3 +20,4 @@ Route::resource('property','PropertyController');
 Route::resource('users','UsersController');
 Route::post('login', array('uses'=>'UsersController@login','as'=>'login'));
 
+Route::get('getreturns', ['uses'=>'PropertyController@getreturns','as'=>'getreturns']);

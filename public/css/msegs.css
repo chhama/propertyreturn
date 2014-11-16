@@ -111,6 +111,15 @@ header .intro-text .formheader {
     font-weight: 700;
 }
 
+header .intro-text .formheader-small {
+    display: block;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1.6em;
+    font-weight: 200;
+    color: #1a242f;
+}
+
 header .intro-text .skills {
     font-size: 1.25em;
     font-weight: 300;
@@ -396,12 +405,13 @@ footer .footer-below {
 .portfolio-modal .modal-content {
     padding: 100px 0;
     min-height: 100%;
-    border: 0;
+    border: 1;
     border-radius: 0;
     text-align: center;
     background-clip: border-box;
     -webkit-box-shadow: none;
     box-shadow: none;
+    margin:15px;
 }
 
 .portfolio-modal .modal-content h2 {
@@ -458,8 +468,8 @@ footer .footer-below {
 
 table>tbody>tr#returnstr {
     background-color:transparent;
-    color:#8a7;
-    font-size: 1.1em;
+    /*color:#000;*/
+    font-size: 0.9em;
 }
 
 table>thead>tr#returnstr {
@@ -496,10 +506,33 @@ header.form>.container-fluid {
 
 .table-striped > thead > tr > td,
 .table-striped > thead > tr > th {
-  background-color: #dee;
+  background-color: #fff;
 }
 
 .table-responsive {
     max-width: 1434px;
+    overflow: auto;
+}
+
+.forminstructions {
+    text-align: justify;
+}
+
+div.input-group>.officer-info-label {
+    background-color: transparent;
+    border: none;
+}
+
+div.input-group>.officer-info-input {
+    border:0;
+    border-bottom: 1px solid #555;
+    border-radius: 0;
+}
+.modal-backdrop{
+    background:#fff;
+    opacity: 0.75;
+}
+
+#returnsmodal .modalcontent {
     overflow: auto;
 }

@@ -12,13 +12,16 @@
     <title>Property Returns</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    {{ HTML::Style('css/bootstrap.min.css') }}
+    {{ HTML::Style('css/bootstrap.css') }}
     <!-- Custom CSS -->
     {{ HTML::Style('css/msegs.css') }}
     <!-- Custom Fonts -->
     {{ HTML::Style('font-awesome-4.1.0/css/font-awesome.min.css') }}
+    
+<!-- 
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+ -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

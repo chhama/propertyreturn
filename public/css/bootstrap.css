@@ -5350,11 +5350,11 @@ button.close {
   -webkit-appearance: none;
 }
 .modal-open {
-  overflow: hidden;
+  overflow: scroll;
 }
 .modal {
   display: none;
-  overflow: hidden;
+  overflow: scroll;
   position: fixed;
   top: 0;
   right: 0;
