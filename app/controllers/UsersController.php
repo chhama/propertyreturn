@@ -86,15 +86,21 @@ class UsersController extends \BaseController {
 	public function update($id)
 	{
 		$user = User::find($id);
-		$user->emp_id 			= Input::get('emp_id');
-		$user->name 			= Input::get('name');
-		$user->mobile 			= Input::get('mobile');
-		$user->username 		= Input::get('username');
-		$user->user_type 		= Input::get('user_type');
-		$user->entry_into_service	= Input::get('entry_into_service');
-		$user->superannuation_date	= Input::get('superannuation_date');
-		if($user->save())
-			return Redirect::back()->with(['flash_message'=>'User successfully created','msgtype'=>'success']);
+		if(isset(Input::get('password'))){
+			$user->password			= Input::get('password');
+			if($user->save())
+				return Redirect::back()->with(['flash_message'=>'Password successfully Updated','msgtype'=>'success']);
+		} else {
+			$user->emp_id 			= Input::get('emp_id');
+			$user->name 			= Input::get('name');
+			$user->mobile 			= Input::get('mobile');
+			$user->username 		= Input::get('username');
+			$user->user_type 		= Input::get('user_type');
+			$user->entry_into_service	= Input::get('entry_into_service');
+			$user->superannuation_date	= Input::get('superannuation_date');
+			if($user->save())
+				return Redirect::back()->with(['flash_message'=>'User successfully Updated','msgtype'=>'success']);
+		}
 	}
 
 
@@ -124,6 +130,11 @@ class UsersController extends \BaseController {
 	public function logout(){
 		Auth::logout();
 		return Redirect::to('/');
+	}
+
+	public function changePassword($id){
+		$userById = User::find($id);
+		return View::make('users.changepassword')->with(array('userById'=>$userById));
 	}
 
 

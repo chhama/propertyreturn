@@ -40,7 +40,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Password</label>
-                                {{Form::text('password','',['class'=>'form-control','placeholder'=>'Password','id'=>'password','size'=>'10','data-validation-required-message'=>'Please enter Password.','required'])}}
+                                {{Form::password('password',['class'=>'form-control','placeholder'=>'Password','id'=>'password','size'=>'10','data-validation-required-message'=>'Please enter Password.','required'])}}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
