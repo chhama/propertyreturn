@@ -86,10 +86,27 @@ class UsersController extends \BaseController {
 	public function update($id)
 	{
 		$user = User::find($id);
-		if(isset(Input::get('password'))){
-			$user->password			= Input::get('password');
-			if($user->save())
-				return Redirect::back()->with(['flash_message'=>'Password successfully Updated','msgtype'=>'success']);
+		$password = Input::get('password');
+		if(isset($password)){
+
+			$rules = array(
+					'password' => 'required',
+					'password_confirm' => 'required|same:password',
+				);
+
+			$validator = Validator::make(Input::all(), $rules);
+
+			if ($validator->fails()) {
+				return Redirect::route('users.changepassword',$id)
+					->withErrors($validator)
+					->withInput(Input::all());
+			}
+			else {
+				$user->password			= Hash::make(Input::get('password'));
+				if($user->save())
+					return Redirect::back()->with(['flash_message'=>'Password successfully Updated','msgtype'=>'success']);
+			}
+
 		} else {
 			$user->emp_id 			= Input::get('emp_id');
 			$user->name 			= Input::get('name');
