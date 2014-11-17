@@ -88,8 +88,8 @@ class UsersController extends \BaseController {
 		$user = User::find($id);
 		$password = Input::get('password');
 		if(isset($password)){
-
 			$rules = array(
+					'currentPassword' => 'required|exists:' . $user->getTable() . ',password',
 					'password' => 'required',
 					'password_confirm' => 'required|same:password',
 				);
