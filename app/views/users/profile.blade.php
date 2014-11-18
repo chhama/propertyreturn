@@ -32,6 +32,13 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12  controls">
+                            <label>Username</label>
+                            {{Form::text('username',null,['class'=>'form-control','placeholder'=>'Username','id'=>'username','size'=>'10','data-validation-required-message'=>'Please enter Name.','readonly'])}}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12  controls">
                             <label>Mobile</label>
                             {{Form::text('mobile',null,['class'=>'form-control','placeholder'=>'Mobile','id'=>'mobile','size'=>'10','data-validation-required-message'=>'Please enter Mobile.','required'])}}
                             <p class="help-block text-danger"></p>
@@ -48,13 +55,6 @@
                         <div class="form-group col-xs-12  controls">
                             <label>Superannuation Date</label>
                             {{Form::text('superannuation_date',null,['class'=>'form-control','placeholder'=>'Superannuation Date','id'=>'superannuation_date','size'=>'10','data-validation-required-message'=>'Please enter Supperannuation Date.','required'])}}
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12  controls">
-                            <label>User Type</label>
-                            {{Form::select('user_type',array('superadmin'=>'superadmin','admin'=>'admin','employee'=>'employee'),$userById->user_type,['class'=>'form-control','placeholder'=>'User Type','id'=>'user_type','size'=>'10','data-validation-required-message'=>'Please enter User Type.','required'])}}
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>

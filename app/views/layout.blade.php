@@ -51,9 +51,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @if(Auth::check())
+                    @if(Auth::check()) 
+                    
+                    <li class="page-scroll">
+                        <a href="{{ URL::to('returns/create')}}">Create Property</a>
+                    </li>
                     <li class="page-scroll">
                         <a href="{{ URL::route('users.index')}}">Users</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{{ URL::route('users.profile', $id = Auth::user()->id)}}">Profile</a>
                     </li>
                     <li class="page-scroll">
                         <a href="{{ URL::route('logout')}}" 'class'='btn btn-default'>Logout</a>

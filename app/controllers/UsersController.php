@@ -160,5 +160,14 @@ class UsersController extends \BaseController {
 		return View::make('users.changepassword')->with(array('userById'=>$userById));
 	}
 
+	public function profile($id)
+	{	
+		$userById = User::find($id);
+		return View::make('users.profile')->with(array(
+										'userById'	=> $userById
+										));
+		// return View::make('users.edit');	
+	}
+
 
 }
