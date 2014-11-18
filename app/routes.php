@@ -17,7 +17,7 @@ Route::resource('sessions', 'SessionsController');
 Route::get('returns/create', array('uses'=>'PropertyController@create','as'=>'returns.create'));
 
 Route::resource('property','PropertyController');
-Route::resource('users','UsersController');
+Route::resource('users','UsersController'); 
 Route::post('login', array('uses'=>'UsersController@login','as'=>'login'));
 Route::get('users/{id}/changepassword', array('uses'=>'UsersController@changePassword','as'=>'users.changepassword'));
 
