@@ -70,9 +70,15 @@ class UsersController extends \BaseController {
 	 * @return Response
 	 */
 	public function edit($id)
-	{
+	{	
+		$userAll = User::orderBy('name')->paginate();
+		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		$userById = User::find($id);
-		return View::make('users.edit')->with(array('userById'=>$userById));
+		return View::make('users.edit')->with(array(
+										'userById'	=> $userById,
+										'userAll'	=> $userAll,
+										'index'		=> $index
+										));
 		// return View::make('users.edit');	
 	}
 
