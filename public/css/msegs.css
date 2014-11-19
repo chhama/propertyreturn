@@ -484,6 +484,7 @@ table>thead>tr#returnstr {
     font-weight: normal;
 }
 
+
 table>tbody>tr>td>textarea {
     border-color: #ecf0f1;
 }
@@ -537,6 +538,6 @@ div.input-group>.officer-info-input {
     overflow: auto;
 }
 
-.create-user-row {
+.createuser-row {
     margin-top: 20px;
 }

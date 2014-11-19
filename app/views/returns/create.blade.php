@@ -39,7 +39,7 @@
                                 <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Name of officer</i></span>
-                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->username), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
+                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->name), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Service</i></span>
@@ -47,11 +47,11 @@
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Date of first entry into Government service.</i></span>
-                                        {{ Form::text('date_of_entry',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record']) }}
+                                        {{ Form::text('date_of_entry',Input::old('title',Auth::user()->entry_into_service), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record']) }}
                                     </div>
                                     <div class="input-group">
                                          <span class="input-group-addon officer-info-label">Date of Superannuation</i></span>
-                                        {{ Form::text('date_of_superannuation',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date']) }}
+                                        {{ Form::text('date_of_superannuation',Input::old('title',Auth::user()->superannuation_date), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date']) }}
                                     </div>    
                            
                         </fieldset>
@@ -203,7 +203,6 @@
                             </div>
                         </div>
                         {{Form::Submit('Submit',['class'=>'btn btn-primary form-control','style'=>'width:120px;'])}}
-                        <div id="hello1">HHH</div>
                     {{Form::close()}}
                     </div>
                 </div>
