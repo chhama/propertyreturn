@@ -536,3 +536,7 @@ div.input-group>.officer-info-input {
 #returnsmodal .modalcontent {
     overflow: auto;
 }
+
+.create-user-row {
+    margin-top: 20px;
+}

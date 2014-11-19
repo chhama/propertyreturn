@@ -198,7 +198,7 @@
                                 {{Form::text('otp',Input::old('otp',''),$otpProperties)}}
                                 {{$errors->has('otp') ? '<span class="help-block">'.$errors->first('otp').'</span>' : '' }}
                                 @if(Input::old('otp') && !$errors->has('otp'))
-                                    <p class="text-info "> <?php echo _('The one time password you entered will be used'); ?> </p>
+                                    <p class="text-info "> <?php echo ('The one time password you entered will be used'); ?> </p>
                                 @endif
                             </div>
                         </div>

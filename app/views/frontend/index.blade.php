@@ -230,11 +230,14 @@
                     if(officer) {
                         
                     var immovable_row =   '<div class="panel panel-default col-lg-12">'
-                                    +'<div class="panel-heading">Property Returns Record'
+                                    +'<div class="panel-heading"><h4>Annual Statement of Property as on 31<sup>st</sup> December '+new Date().getFullYear()+'</h4>'
                                     +'</div>'
                                     +'<div class="panel-body">'
                                     +'<table class="table table-hover table-striped table-bordered">'
+                                    +'<tr><td>Name of officer</td><td>'+officer.name+'</td></tr>'
                                     +'<tr><td>Service</td><td>'+officer.service+'</td></tr>'
+                                    +'<tr><td>Date of first entry into service</td><td>'+officer.entry_into_service+'</td></tr>'
+                                    +'<tr><td>Date of Superannuation</td><td>'+officer.superannuation_date+'</td></tr>'
                                     +'<tr><td>Present Place of Posting</td><td>'+officer.present_place_of_posting+'</td></tr>'
                                     +'<tr><td>Basic Pay</td><td>'+officer.basic_pay+'</td></tr>'
                                     +'<tr><td>Present Post</td><td>'+officer.present_post+'</td></tr>'
