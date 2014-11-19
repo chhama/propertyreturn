@@ -161,7 +161,7 @@
     </section>
 
     
-    <!-- Portfolio Modals -->
+    <!-- Returns Modal -->
 
 
  <div class="portfolio-modal modal fade scrollable dismissible" id="returnsmodal" role="dialog"  aria-hidden="false">
@@ -209,6 +209,10 @@
 
     @section('extrajs')
         <script language="javascript">
+        $(function(){
+            console.log("welcome to msegs");
+        });
+
             $('#btn_get_returns').click(function(){
                 console.log('ll');
                 $.ajax({
@@ -222,7 +226,7 @@
                         // var pit = {immovable_property: "{"immovable_subdivision":["a","b","c","d"],"immovable_prop_details":["a","b ","c","d"],"immovable_cost":["a","b","c","d"],"immovable_present_value":["a","b","c","d"],"immovable_owner":["a","b","c","d"],"immovable_how_acquired":["a","b","c","d"],"immovable_annual_income":["a","b","c","d"],"immovable_remarks":["a","b","c","d"],"add_subdivision":"e","add_prop_details":"e","add_cost":"e","add_present_value":"e","add_owner":"e","add_how_acquired":"e","add_annual_income":"e","add_remarks":"e "}"};
                         // document.write(movable.movable_description[0]);
                         // document.write(immovable.immovable_subdivision[1]);
-                        console.log(movable);
+                        console.log(movable.immovable_subdivision);
                     if(officer) {
                         
                     var immovable_row =   '<div class="panel panel-default col-lg-12">'
@@ -247,18 +251,27 @@
                                     +'<th>Annual income from the property</th>'
                                     +'<th>Remarks</th></tr></thead>'
                                     +'<tbody>'    
-                    var len = immovable.immovable_subdivision.length;
-                    for(var i=0;i<len;i++){
-                        immovable_row += "<tr><td>"+immovable.immovable_subdivision[i]+"</td><td>"+immovable.immovable_prop_details[i]+"</td><td>"+immovable.immovable_cost[i]+"</td><td>"+immovable.immovable_present_value[i]+"</td><td>"
-                        +immovable.immovable_owner[i]+"</td><td>"+immovable.immovable_how_acquired[i]+"</td><td>"+immovable.immovable_annual_income[i]+"</td><td>"+immovable.immovable_remarks[i]+"</td></tr>";
-               
+                    if(immovable){
+                        if(immovable.immovable_subdivision != undefined) {
+                            var len = immovable.immovable_subdivision.length;
+                            for(var i=0;i<len;i++){
+                                immovable_row += "<tr><td>"+immovable.immovable_subdivision[i]+"</td><td>"+immovable.immovable_prop_details[i]+"</td><td>"+immovable.immovable_cost[i]+"</td><td>"+immovable.immovable_present_value[i]+"</td><td>"
+                                +immovable.immovable_owner[i]+"</td><td>"+immovable.immovable_how_acquired[i]+"</td><td>"+immovable.immovable_annual_income[i]+"</td><td>"+immovable.immovable_remarks[i]+"</td></tr>";
+                       
+                            }
+                        }
                     }
+                    
                     // document.write(immovable_row);
                 }
 
-                    immovable_row += "<tr><td>"+immovable.add_subdivision+"</td><td>"+immovable.add_prop_details+"</td><td>"+immovable.add_cost+"</td><td>"+immovable.add_present_value+"</td><td>"
+              
+                if(immovable) {
+                    if(immovable.add_subdivision) {
+                        immovable_row += "<tr><td>"+immovable.add_subdivision+"</td><td>"+immovable.add_prop_details+"</td><td>"+immovable.add_cost+"</td><td>"+immovable.add_present_value+"</td><td>"
                         +immovable.add_owner+"</td><td>"+immovable.add_how_acquired+"</td><td>"+immovable.add_annual_income+"</td><td>"+immovable.add_remarks+"</td></tr>";
-                   
+                        }
+                   }
 
                     var movable_row ='</tbody></table><h3>Movable Property</h3>'
                     +'<table class="table table-hover table-striped table-bordered">'
@@ -269,14 +282,22 @@
                     +'<th>Remarks</th>'
                     +'</tr></thead><tbody>'
                     
-                    var movlen = movable.movable_description.length;
-                    for(var i=0;i<movlen;i++) {
-                        movable_row += "<tr><td>"+movable.movable_description[i]+"</td><td>"+movable.movable_price[i]+"</td><td>"+movable.movable_in_whose_name[i]+"</td><td>"
-                        +movable.movable_how_acquired[i]+"</td><td>"+movable.movable_remarks[i]+"</td></tr>"
+                    
+                    if(movable) {
+                        if(movable.movable_description != undefined) {
+                            var movlen = movable.movable_description.length;
+                            for(var i=0;i<movlen;i++) {
+                                movable_row += "<tr><td>"+movable.movable_description[i]+"</td><td>"+movable.movable_price[i]+"</td><td>"+movable.movable_in_whose_name[i]+"</td><td>"
+                                +movable.movable_how_acquired[i]+"</td><td>"+movable.movable_remarks[i]+"</td></tr>"
+                        }
+                    }
+                        if(movable.add_movable_description != undefined) {
+                            movable_row += "<tr><td>"+movable.add_movable_description+"</td><td>"+movable.add_movable_price+"</td><td>"+movable.add_movable_in_whose_name+"</td><td>"
+                            +movable.add_movable_how_acquired+"</td><td>"+movable.add_movable_remarks+"</td></tr>"
+                        }
                     }
 
-                    movable_row += "<tr><td>"+movable.add_movable_description+"</td><td>"+movable.add_movable_price+"</td><td>"+movable.add_movable_in_whose_name+"</td><td>"
-                        +movable.add_movable_how_acquired+"</td><td>"+movable.add_movable_remarks+"</td></tr>"
+
 
                     movable_row += '</tbody></table></div></div>';
 
