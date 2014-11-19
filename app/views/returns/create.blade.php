@@ -4,6 +4,7 @@
 
 @section('container')
     <script language="javascript">
+
         function removeRow(rnum) {
             $('#rowNum'+rnum).remove();
         }
@@ -18,8 +19,10 @@
                 data: {'id': '123'},
                 type: 'GET', 
             }).success(function(data){
+                $('#otp').removeClass('hidden');
+                $('#submitbutton').removeClass('hidden');
                 //console.log('Hello');
-                $('#hello1').html(data);
+                //$('#hello1').html(data);
             })
         }
     </script>
@@ -39,7 +42,7 @@
                                 <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Name of officer</i></span>
-                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->name), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
+                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->username), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Service</i></span>
@@ -47,11 +50,11 @@
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Date of first entry into Government service.</i></span>
-                                        {{ Form::text('date_of_entry',Input::old('title',Auth::user()->entry_into_service), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record']) }}
+                                        {{ Form::text('date_of_entry',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record']) }}
                                     </div>
                                     <div class="input-group">
                                          <span class="input-group-addon officer-info-label">Date of Superannuation</i></span>
-                                        {{ Form::text('date_of_superannuation',Input::old('title',Auth::user()->superannuation_date), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date']) }}
+                                        {{ Form::text('date_of_superannuation',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date']) }}
                                     </div>    
                            
                         </fieldset>
@@ -175,34 +178,16 @@
                             </div>
                         
                         <!-- OTP -->
-                        <div class="form-group {{Input::old('otp') && !$errors->has('otp') ? 'hidden' : ''}}">
-                            <div class="col-md-8 col-md-offset-4">
+                        
+                            <div class="col-md-2">
                                 <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-success"><i class="fa fa-key"></i> Generate OTP </button>
                             </div>
-                        </div>
-                        <div class="form-group hidden" id="otp_info">
-                            <div class="col-md-8 col-md-offset-4">
-                                <div class="alert alert-info">
-                                    <p> ssa </p>
-                                </div>
+                            <div class="col-md-2">
+                                    {{Form::text('otp',Input::old('otp'),['placeholder'=>'Enter OTP','id'=>'otp','class'=>'form-control hidden','required'])}}
                             </div>
+                        <div class="col-md-2">
+                                {{Form::Submit('Submit',['id'=>'submitbutton','class'=>'btn btn-primary form-control hidden','style'=>'width:120px;'])}}
                         </div>
-                        <div class="form-group {{$errors->has('otp') ? 'has-error' : Input::old('otp') ? '' : 'hidden interaction-hidden'}}">
-                            <label for="otp" class="col-md-4 control-label">One Time Password</label>
-                            <div class="col-md-8">
-                                <?php 
-                                $otpProperties = ['class'=>'form-control'];
-                                // if(Input::old('otp') && !$errors->has('otp'))
-                                //     $otpProperties['readonly'] = 'readonly';
-                                 ?>
-                                {{Form::text('otp',Input::old('otp',''),$otpProperties)}}
-                                {{$errors->has('otp') ? '<span class="help-block">'.$errors->first('otp').'</span>' : '' }}
-                                @if(Input::old('otp') && !$errors->has('otp'))
-                                    <p class="text-info "> <?php echo ('The one time password you entered will be used'); ?> </p>
-                                @endif
-                            </div>
-                        </div>
-                        {{Form::Submit('Submit',['class'=>'btn btn-primary form-control','style'=>'width:120px;'])}}
                     {{Form::close()}}
                     </div>
                 </div>
