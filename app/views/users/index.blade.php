@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3>List Users</h3>
-                    <hr class="star-primary">
+                    <!-- <hr class="star-primary"> -->
                 </div>
             </div>
             <div class="row" >
@@ -17,32 +17,34 @@
                         <table class="table table-hover table-striped table-bordered">
                             <thead>
                                 <tr id='returnstr'>
-                                    <th class="proptd">#</th>
-                                    <th class="proptd">Employee ID</th>
-                                    <th class="proptd">Name</th>
-                                    <th class="proptd">Username</th>
-                                    <th class="proptd">Mobile</th>
-                                    <th class="proptd">Entry Into Service</th>
-                                    <th class="proptd">Superannuation Date</th>
-                                    <th class="proptd">User Type</th>
-                                    <th class="proptd">Action</th>
+                                    <th>#</th>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Mobile</th>
+                                    <th>Entry Into Service</th>
+                                    <th>Superannuation Date</th>
+                                    <th>User Type</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $slno = 0; ?>
                                 @foreach($userAll as $user)
                                 <tr>
-                                    <td class="proptd">{{$index+$slno}}</td>
-                                    <td class="proptd">{{$user->emp_id}}</td>
-                                    <td class="proptd">{{$user->name}}</td>
-                                    <td class="proptd">{{$user->username}}</td>
-                                    <td class="proptd">{{$user->mobile}}</td>
-                                    <td class="proptd">{{$user->entry_into_service}}</td>
-                                    <td class="proptd">{{$user->superannuation_date}}</td>
-                                    <td class="proptd">{{$user->user_type}}</td>
-                                    <td class="proptd">
+                                    <td>{{$index+$slno}}</td>
+                                    <td>{{$user->emp_id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->username}}</td>
+                                    <td>{{$user->mobile}}</td>
+                                    <td>{{$user->entry_into_service}}</td>
+                                    <td>{{$user->superannuation_date}}</td>
+                                    <td>{{$user->user_type}}</td>
                                         {{Form::open(array('url'=>route('users.destroy', array($user->id)),'method'=>'delete'))}}
+                                    <td>
                                             <a href="{{route('users.edit', array($user->id))}}" class="btn btn-xs btn-success tooltip-top" title="Edit User"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;
+                                    </td>
+                                    <td>
                                             <button type="submit" onclick="return confirm ('<?php echo _('Are you sure') ?>');" name="id" class="btn btn-xs btn-danger tooltip-top" title="Remove User" value="{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></button>
                                         {{Form::close()}}
                                     </td>
@@ -58,7 +60,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h3>Add User</h3>
-                    <hr class="star-primary">
+                    <!-- <hr class="star-primary"> -->
                 </div>
             </div>
             <div class="row" style="font-size:12px">
@@ -127,7 +129,7 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Add User</button>
+                                <button type="submit" class="btn btn-success btn-md">Add User</button>
                             </div>
                         </div>
                     {{Form::close()}}

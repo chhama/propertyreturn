@@ -54,11 +54,13 @@
                     @if(Auth::check()) 
                     
                     <li class="page-scroll">
-                        <a href="{{ URL::to('returns/create')}}">Create Property</a>
+                        <a href="{{ URL::to('returns/create')}}">File Returns</a>
                     </li>
+                    @if(Auth::user()->user_type == 'superadmin' || Auth::user()->user_type == 'admin')
                     <li class="page-scroll">
                         <a href="{{ URL::route('users.index')}}">Users</a>
                     </li>
+                    @endif
                     <li class="page-scroll">
                         <a href="{{ URL::route('users.profile', $id = Auth::user()->id)}}">Profile</a>
                     </li>
@@ -70,13 +72,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <a href="#view">View</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="#portfolio">Howto</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#about">About</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#view">View</a>
                     </li>
                     <li class="page-scroll">
                         {{Form::open(['route'=>'login','class'=>'navbar-form navbar-right'])}}

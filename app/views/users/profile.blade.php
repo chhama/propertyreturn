@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row createuser-row">
             <div class="col-lg-12 text-center">
-                <h2>Edit User</h2>
-                <hr class="star-primary">
+                <h3>Edit Profile</h3>
+                <!-- <hr class="star-primary"> -->
             </div>
         </div>
         <div class="row">
@@ -62,7 +62,7 @@
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-success btn-lg">Update Profile</button>
+                            <button type="submit" class="btn btn-success btn-md">Update Profile</button>
                         </div>
                     </div>
                 {{Form::close()}}

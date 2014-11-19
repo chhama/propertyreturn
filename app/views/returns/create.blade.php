@@ -124,15 +124,19 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{Form::textarea('add_subdivision','',['cols'=>'16','rows'=>'3','id'=>'add_subdivision'])}}</td>
-                                                <td>{{Form::textarea('add_prop_details','',['cols'=>'16','rows'=>'3','id'=>'add_prop_details'])}}</td>
-                                                <td>{{Form::textarea('add_cost','',['cols'=>'13','rows'=>'3','id'=>'add_cost'])}}</td>
-                                                <td>{{Form::text('add_present_value','',['size'=>'9','id'=>'add_present_value'])}}</td>
-                                                <td>{{Form::textarea('add_owner','',['cols'=>'13','rows'=>'3','id'=>'add_owner'])}}</td>
-                                                <td>{{Form::textarea('add_how_acquired','',['cols'=>'13','rows'=>'3','id'=>'add_how_acquired'])}}</td>
-                                                <td>{{Form::text('add_annual_income','',['size'=>'9','id'=>'add_annual_income'])}}</td>
-                                                <td>{{Form::textarea('add_remarks','',['cols'=>'13','rows'=>'3','id'=>'add_remarks'])}}</td>
-                                                <td>{{Form::button('',['class'=>'glyphicon glyphicon-plus-sign alert-success','id'=>'btn_addrow'])}}Add Row</td>
+                                                <td>{{Form::textarea('add_subdivision','',['cols'=>'16','rows'=>'3','id'=>'add_subdivision','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_prop_details','',['cols'=>'16','rows'=>'3','id'=>'add_prop_details','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_cost','',['cols'=>'13','rows'=>'3','id'=>'add_cost','class'=>'form-control'])}}</td>
+                                                <td>{{Form::text('add_present_value','',['size'=>'9','id'=>'add_present_value','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_owner','',['cols'=>'13','rows'=>'3','id'=>'add_owner','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_how_acquired','',['cols'=>'13','rows'=>'3','id'=>'add_how_acquired','class'=>'form-control'])}}</td>
+                                                <td>{{Form::text('add_annual_income','',['size'=>'9','id'=>'add_annual_income','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_remarks','',['cols'=>'13','rows'=>'3','id'=>'add_remarks','class'=>'form-control'])}}</td>
+                                                <td>
+                                                <!-- <i class="btn-lg fa fa-plus fa-lg text-danger" id="btn_addrow"></i> -->
+                                                <!-- <i class="fa fa-plus-circle fa-lg"></i></a> -->
+                                                {{Form::button(' Add Row',['class'=>'btn btn-sm btn-success text-alert fa fa-plus fa-sm','id'=>'btn_addrow'])}}
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -162,13 +166,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr id="returnstr">
-                                                <td>{{Form::textarea('add_movable_description','',['cols'=>'20','rows'=>'3','id'=>'add_movable_description'])}}</td>
-                                                <td>{{Form::textarea('add_movable_price','',['cols'=>'20','rows'=>'3','id'=>'add_movable_price'])}}</td>
-                                                <td>{{Form::textarea('add_movable_in_whose_name','',['cols'=>'20','rows'=>'3','id'=>'add_movable_in_whose_name'])}}</td>
-                                                <td>{{Form::textarea('add_movable_how_acquired','',['cols'=>'20','rows'=>'3','id'=>'add_movable_how_acquired'])}}</td>
-                                                <td>{{Form::textarea('add_movable_remarks','',['cols'=>'20','rows'=>'3','id'=>'add_movable_remarks'])}}</td>
-                                                <td>{{Form::button('',['class'=>'glyphicon glyphicon-plus-sign alert-success','id'=>'btn_movable_addrow'])}}Add Row</td>
+                                            <tr>
+                                                <td>{{Form::textarea('add_movable_description','',['cols'=>'20','rows'=>'3','id'=>'add_movable_description','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_movable_price','',['cols'=>'20','rows'=>'3','id'=>'add_movable_price','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_movable_in_whose_name','',['cols'=>'20','rows'=>'3','id'=>'add_movable_in_whose_name','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_movable_how_acquired','',['cols'=>'20','rows'=>'3','id'=>'add_movable_how_acquired','class'=>'form-control'])}}</td>
+                                                <td>{{Form::textarea('add_movable_remarks','',['cols'=>'20','rows'=>'3','id'=>'add_movable_remarks','class'=>'form-control'])}}</td>
+                                                <td>{{Form::button(' Add Row',['class'=>'btn btn-sm btn-success text-alert fa fa-plus fa-sm','id'=>'btn_movable_addrow'])}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -180,7 +184,7 @@
                         <!-- OTP -->
                         
                             <div class="col-md-2">
-                                <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-success"><i class="fa fa-key"></i> Generate OTP </button>
+                                <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-info"><i class="fa fa-key"></i> Generate OTP </button>
                             </div>
                             <div class="col-md-2">
                                     {{Form::text('otp',Input::old('otp'),['placeholder'=>'Enter OTP','id'=>'otp','class'=>'form-control hidden','required'])}}
@@ -298,7 +302,7 @@
             var rowNum = 0;
             function addrow() {
                 rowNum++;
-                var row = '<tr id="rowNum'+rowNum+'"><td><textarea name="immovable_subdivision[]" cols = "16" rows= "3">'+returns_form.add_subdivision.value+'</textarea></td><td><textarea name="immovable_prop_details[]" cols = "16" rows= "3">'+returns_form.add_prop_details.value+'</textarea></td><td><textarea name="immovable_cost[]" cols = "13" rows= "3">'+returns_form.add_cost.value+'</textarea></td><td><input type="text" name="immovable_present_value[]" value="'+returns_form.add_present_value.value+'" size="9"></td><td><textarea name="immovable_owner[]" cols = "13" rows= "3">'+returns_form.add_owner.value+'</textarea></td><td><textarea name="immovable_how_acquired[]" cols = "13" rows= "3">'+returns_form.add_how_acquired.value+'</textarea></td><td><input type="text" name="immovable_annual_income[]" value="'+returns_form.add_annual_income.value+'" size="9"></td><td><textarea name="immovable_remarks[]" cols = "13" rows= "3">'+returns_form.add_remarks.value+'</textarea></td><td><button class="glyphicon glyphicon-remove-circle alert-danger" onclick="removeRow('+rowNum+')"></button>Remove</td></tr>';
+                var row = '<tr id="rowNum'+rowNum+'"><td><textarea name="immovable_subdivision[]" cols = "16" rows= "3" class="form-control">'+returns_form.add_subdivision.value+'</textarea></td><td><textarea name="immovable_prop_details[]" cols = "16" rows= "3" class="form-control">'+returns_form.add_prop_details.value+'</textarea></td><td><textarea name="immovable_cost[]" cols = "13" rows= "3" class="form-control">'+returns_form.add_cost.value+'</textarea></td><td><input type="text" name="immovable_present_value[]"  class="form-control" value="'+returns_form.add_present_value.value+'" size="9"></td><td><textarea name="immovable_owner[]" cols = "13" rows= "3" class="form-control">'+returns_form.add_owner.value+'</textarea></td><td><textarea name="immovable_how_acquired[]" cols = "13" rows= "3" class="form-control">'+returns_form.add_how_acquired.value+'</textarea></td><td><input type="text" name="immovable_annual_income[]"  class="form-control" value="'+returns_form.add_annual_income.value+'" size="9"></td><td><textarea name="immovable_remarks[]" cols = "13" rows= "3"  class="form-control">'+returns_form.add_remarks.value+'</textarea></td><td><button class="btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm" onclick="removeRow('+rowNum+')"> Remove</button></td></tr>';
                 // $('#qtycounter').val(99);
                 $("#immovabletable tbody tr:last-child").before(row);
 
@@ -315,7 +319,7 @@
 
             function addMovRow() {
                 movRowNum++;
-                var movRow = '<tr id="movRowNum'+movRowNum+'"><td><textarea name="movable_description[]" cols="20" rows="3">'+returns_form.add_movable_description.value+'</textarea></td><td><textarea name="movable_price[]" cols="20" rows="3">'+returns_form.add_movable_price.value+'</textarea></td><td><textarea name="movable_in_whose_name[]" cols="20" rows="3">'+returns_form.add_movable_in_whose_name.value+'</textarea></td><td><textarea name="movable_how_acquired[]" cols="20" rows="3">'+returns_form.add_movable_how_acquired.value+'</textarea></td><td><textarea name="movable_remarks[]" cols="20" rows="3">'+returns_form.add_movable_remarks.value+'</textarea></td><td><button class="glyphicon glyphicon-remove-circle alert-danger" onclick="removeMovRow('+movRowNum+')"></button>Remove</td></tr>';
+                var movRow = '<tr id="movRowNum'+movRowNum+'"><td><textarea name="movable_description[]" cols="20" rows="3" class="form-control">'+returns_form.add_movable_description.value+'</textarea></td><td><textarea name="movable_price[]" cols="20" rows="3" class="form-control">'+returns_form.add_movable_price.value+'</textarea></td><td><textarea name="movable_in_whose_name[]" cols="20" rows="3" class="form-control">'+returns_form.add_movable_in_whose_name.value+'</textarea></td><td><textarea name="movable_how_acquired[]" cols="20" rows="3" class="form-control">'+returns_form.add_movable_how_acquired.value+'</textarea></td><td><textarea name="movable_remarks[]" cols="20" rows="3" class="form-control">'+returns_form.add_movable_remarks.value+'</textarea></td><td><button class="btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm" onclick="removeMovRow('+movRowNum+')"> Remove</button></td></tr>';
                 $("#movabletable tbody tr:last-child").before(movRow);
 
                 $("#add_movable_description").val('');

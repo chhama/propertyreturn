@@ -25,6 +25,9 @@ a.active {
     color: #18bc9c;
 }
 
+p.p-right {
+    text-align: justify;
+}
 h1,
 h2,
 h3,
@@ -37,7 +40,8 @@ h6 {
 }
 
 hr.star-light,
-hr.star-primary {
+hr.star-primary,
+hr.star-howto {
     margin: 25px auto 30px;
     padding: 0;
     max-width: 250px;
@@ -47,7 +51,8 @@ hr.star-primary {
 }
 
 hr.star-light:after,
-hr.star-primary:after {
+hr.star-primary:after,
+hr.star-howto:after {
     content: "\f005";
     display: inline-block;
     position: relative;
@@ -73,6 +78,15 @@ hr.star-primary {
 hr.star-primary:after {
     color: #2c3e50;
     background-color: #fff;
+}
+
+hr.star-howto {
+    border-color: #fff;
+}
+
+hr.star-howto:after {
+    color: #fff;
+    background-color: #18bc9c;
 }
 
 .img-centered {

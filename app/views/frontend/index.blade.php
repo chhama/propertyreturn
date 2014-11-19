@@ -68,8 +68,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Howto</h2>
-                    <hr class="star-primary">
+                    <h2>Instructions for viewing filed returns statements</h2>
+                    <hr class="star-howto">
                 </div>
             </div>
             <div class="row">
@@ -150,10 +150,19 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>This is a Property Registration website.</p>
+                    <p class='p-right'> In exercise of the powers conferred on him under the proviso to rule 3 of the Government of Mizoram (Allocation of 
+                    Business) Rules, 1972 as amended from time to time, the Lt.Governor by notification vide No.J.12011/11/80-POL,
+                     Dated 30/10/81, published in the Mizoram Gazetted Vol-X,issue No.44, Dated 30/10/81 had ordered creation of a 
+                     separate Department to be known as Vigilance Department under the Government of Mizoram and the Schedule appended with 
+                     Government of India, Ministry of Home Affairs’ Notification No.U-11022/1/77-UTL dated 17.11.77</p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Created by MSeGS.</p>
+                    <p class='p-right'>The Vigilance Department is one of the most important Department according to the Mizoram 
+                    (Allocation of Business) Rules, 1987 which plays pivotal role to check assets of all Gazetted Officers. 
+                    As such, the Department, along with the Mizoram State e-Governance Society (MSEGS) has developed this Online Property Returns 
+                    software to provide a convenient way for filing annual property returns and as a result promote transparency and efficiency within 
+                    the Government.
+</p>
                 </div>
                
             </div>
