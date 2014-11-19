@@ -56,9 +56,9 @@ class PropertyController extends \BaseController {
 			$property->movable_property = json_encode(Input::only('movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
 			$property->immovable_property = json_encode(Input::except('service','present_place_of_posting','basic_pay','present_post','pay_band','present_pay','_token','name_of_officer','date_of_entry','date_of_superannuation','movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
 			// dd($property->movable_property);
+		} 
 			if($property->save())
 				return Redirect::back();
-		} 
 
 		// $gaga = json_encode(Input::get('immovable_subdivision'));	
 		// echo $gaga;
@@ -121,9 +121,11 @@ class PropertyController extends \BaseController {
         $phone = Auth::user()->mobile;
 
          $post = curl_init();
-         curl_setopt($post, CURLOPT_URL, Config::get("http://sms2.gateway4sms.com/sendsms?uname=".urlencode('dict')."&pwd=".urlencode('Tk#c%I$52')."&senderid=".urlencode('VIGLMZ')."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T"));
+         curl_setopt($post, CURLOPT_URL, "http://sms2.gateway4sms.com/sendsms?uname=".urlencode('dict')."&pwd=".urlencode('Tk#c%I$52')."&senderid=".urlencode('VIGLMZ')."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
          curl_exec($post);
          curl_close($post);
+         		// return Response::json($message);
+
         //echo "<a href=http://sms2.gateway4sms.com/sendsms?uname=".urlencode('dict')."&pwd=".urlencode('Tk#c%I$52')."&senderid=".urlencode('VIGLMZ')."&to=".$phone."&msg=".urlencode('One Time Password for submitting Property Returns form is $otp.')."&route=T>Click</a>";
         //$this->sms->pushSMS(Input::get('phone'), $message);
         //return Response::json(['status'=>'success', 'otp'=>$otp]);

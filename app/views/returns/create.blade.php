@@ -21,7 +21,7 @@
             }).success(function(data){
                 $('#otp').removeClass('hidden');
                 $('#submitbutton').removeClass('hidden');
-                //console.log('Hello');
+                // console.log(data);
                 //$('#hello1').html(data);
             })
         }
@@ -42,7 +42,7 @@
                                 <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Name of officer</i></span>
-                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->username), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
+                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->name), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Service</i></span>
