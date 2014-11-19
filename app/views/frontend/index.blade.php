@@ -226,7 +226,7 @@
                         // var pit = {immovable_property: "{"immovable_subdivision":["a","b","c","d"],"immovable_prop_details":["a","b ","c","d"],"immovable_cost":["a","b","c","d"],"immovable_present_value":["a","b","c","d"],"immovable_owner":["a","b","c","d"],"immovable_how_acquired":["a","b","c","d"],"immovable_annual_income":["a","b","c","d"],"immovable_remarks":["a","b","c","d"],"add_subdivision":"e","add_prop_details":"e","add_cost":"e","add_present_value":"e","add_owner":"e","add_how_acquired":"e","add_annual_income":"e","add_remarks":"e "}"};
                         // document.write(movable.movable_description[0]);
                         // document.write(immovable.immovable_subdivision[1]);
-                        console.log(movable.immovable_subdivision);
+                        console.log(officer);
                     if(officer) {
                         
                     var immovable_row =   '<div class="panel panel-default col-lg-12">'
