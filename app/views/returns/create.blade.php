@@ -11,6 +11,17 @@
         function removeMovRow(rnum) {
             $('#movRowNum'+rnum).remove();
         }
+
+        function interactionRequestOTP () {
+             $.ajax({
+                url: "{{ URL::route('property.otp')}}",
+                data: {'id': '123'},
+                type: 'GET', 
+            }).success(function(data){
+                //console.log('Hello');
+                $('#hello1').html(data);
+            })
+        }
     </script>
 
     <!-- Header -->
@@ -162,10 +173,37 @@
                                 
 
                             </div>
-
-                          
+                        
+                        <!-- OTP -->
+                        <div class="form-group {{Input::old('otp') && !$errors->has('otp') ? 'hidden' : ''}}">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-success"><i class="fa fa-key"></i> Generate OTP </button>
+                            </div>
+                        </div>
+                        <div class="form-group hidden" id="otp_info">
+                            <div class="col-md-8 col-md-offset-4">
+                                <div class="alert alert-info">
+                                    <p> ssa </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group {{$errors->has('otp') ? 'has-error' : Input::old('otp') ? '' : 'hidden interaction-hidden'}}">
+                            <label for="otp" class="col-md-4 control-label">One Time Password</label>
+                            <div class="col-md-8">
+                                <?php 
+                                $otpProperties = ['class'=>'form-control'];
+                                // if(Input::old('otp') && !$errors->has('otp'))
+                                //     $otpProperties['readonly'] = 'readonly';
+                                 ?>
+                                {{Form::text('otp',Input::old('otp',''),$otpProperties)}}
+                                {{$errors->has('otp') ? '<span class="help-block">'.$errors->first('otp').'</span>' : '' }}
+                                @if(Input::old('otp') && !$errors->has('otp'))
+                                    <p class="text-info "> <?php echo _('The one time password you entered will be used'); ?> </p>
+                                @endif
+                            </div>
+                        </div>
                         {{Form::Submit('Submit',['class'=>'btn btn-primary form-control','style'=>'width:120px;'])}}
-
+                        <div id="hello1">HHH</div>
                     {{Form::close()}}
                     </div>
                 </div>
