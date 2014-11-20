@@ -9,10 +9,16 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
+		if(Auth::user()->user_type == 'admin') {
+			$userType = array('employee'=>'employee');
+		} elseif(Auth::user()->user_type == 'superadmin') {
+			$userType = array('','superadmin'=>'superadmin','admin'=>'admin','employee'=>'employee');
+		}
 		$userAll = User::orderBy('name')->paginate();
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		return View::make('users.index')->with(array(
 										'userAll'	=> $userAll,
+										'userType'	=> $userType,
 										'index'		=> $index
 										));
 	}
@@ -71,12 +77,18 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{	
+		if(Auth::user()->user_type == 'admin') {
+			$userType = array('employee'=>'employee');
+		} elseif(Auth::user()->user_type == 'superadmin') {
+			$userType = array('','superadmin'=>'superadmin','admin'=>'admin','employee'=>'employee');
+		}
 		$userAll = User::orderBy('name')->paginate();
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		$userById = User::find($id);
 		return View::make('users.edit')->with(array(
 										'userById'	=> $userById,
 										'userAll'	=> $userAll,
+										'userType'	=> $userType,
 										'index'		=> $index
 										));
 		// return View::make('users.edit');	

@@ -12,7 +12,6 @@
                 </div>
             </div>
             <div class="row" >
-                
                 <div class="table-responsive">
                         <table class="table table-hover table-striped table-bordered">
                             <thead>
@@ -70,9 +69,9 @@
                     <!-- <form name="sentMessage" id="contactForm" novalidate> -->
                     {{Form::open(['route'=>'users.store','class'=>''])}}
                         <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <div class="form-group col-xs-12 controls">
                                 <label>User Type</label>
-                                {{Form::select('user_type',array('superadmin','admin','employee'),null,['class'=>'form-control','placeholder'=>'User Type','id'=>'user_type','data-validation-required-message'=>'Please enter User Type.','required'])}}
+                                {{Form::select('user_type',$userType,null,['class'=>'form-control','placeholder'=>'User Type','id'=>'user_type','data-validation-required-message'=>'Please enter User Type.','required'])}}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -114,14 +113,14 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>Entry Into Service</label>
-                                {{Form::text('entry_into_service','',['class'=>'form-control','placeholder'=>'Entry Into Service','id'=>'entry_into_service','size'=>'10','data-validation-required-message'=>'Please enter Entry Into Service.','required'])}}
+                                {{ Form::text('entry_into_service','', ['class'=>'form-control','id'=>'datetimepicker1','required','placeholder'=>'Entry into Service']) }}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>Superannuation Date</label>
-                                {{Form::text('superannuation_date','',['class'=>'form-control','placeholder'=>'Superannuation Date','id'=>'superannuation_date','size'=>'10','data-validation-required-message'=>'Please enter Supperannuation Date.','required'])}}
+                                {{ Form::text('superannuation_date','', ['class'=>'form-control','id'=>'datetimepicker2','required','placeholder'=>'Superannuation Date','required']) }}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -139,5 +138,13 @@
         </div>
     </div>
 </section>
+<script>
+    $('#datetimepicker1').datetimepicker({
+        step: 5
+    });
 
+    $('#datetimepicker2').datetimepicker({
+        step: 5
+    });
+</script>
 @stop

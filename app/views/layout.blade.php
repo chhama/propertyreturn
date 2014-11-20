@@ -20,6 +20,7 @@
     {{ HTML::Style('css/msegs.css') }}
     <!-- Custom Fonts -->
     {{ HTML::Style('font-awesome-4.1.0/css/font-awesome.min.css') }}
+    {{ HTML::Style('css/bootstrap-datetimepicker.min.css') }}
     
 <!-- 
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -32,7 +33,24 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+   <!-- jQuery -->
+    {{ HTML::Script('js/jquery.js') }}
 
+    <!-- Bootstrap Core JavaScript -->
+    {{ HTML::Script('js/bootstrap.min.js') }}
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   
+    {{ HTML::Script('js/classie.js') }}
+    {{ HTML::Script('js/cbpAnimatedHeader.js') }}
+    <!-- Contact Form JavaScript -->
+    {{ HTML::Script('js/jqBootstrapValidation.js') }}
+    <!-- <script src="js/contact_me.js"></script> -->
+
+    <!-- Custom Theme JavaScript -->
+    {{ HTML::Script('js/msegs.js') }}
+    {{ HTML::Script('js/bootstrap-datetimepicker.min.js') }}
+    @yield('extrajs')
 </head>
 
 <body id="page-top" class="index">
@@ -160,25 +178,6 @@
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-
-    
-    <!-- jQuery -->
-    {{ HTML::Script('js/jquery.js') }}
-
-    <!-- Bootstrap Core JavaScript -->
-    {{ HTML::Script('js/bootstrap.min.js') }}
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-   
-    {{ HTML::Script('js/classie.js') }}
-    {{ HTML::Script('js/cbpAnimatedHeader.js') }}
-    <!-- Contact Form JavaScript -->
-    {{ HTML::Script('js/jqBootstrapValidation.js') }}
-    <!-- <script src="js/contact_me.js"></script> -->
-
-    <!-- Custom Theme JavaScript -->
-    {{ HTML::Script('js/msegs.js') }}
-    @yield('extrajs')
 
 </body>
 
