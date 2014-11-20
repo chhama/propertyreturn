@@ -18,6 +18,7 @@ Route::get('returns/create', array('uses'=>'PropertyController@create','as'=>'re
 
 Route::resource('property','PropertyController');
 Route::resource('users','UsersController'); 
+Route::resource('departments','DepartmentController'); 
 Route::post('login', array('uses'=>'UsersController@login','as'=>'login'));
 Route::get('users/{id}/changepassword', array('uses'=>'UsersController@changePassword','as'=>'users.changepassword'));
 Route::get('users/{id}/profile', array('uses'=>'UsersController@profile','as'=>'users.profile'));

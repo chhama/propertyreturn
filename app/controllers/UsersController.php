@@ -14,12 +14,14 @@ class UsersController extends \BaseController {
 		} elseif(Auth::user()->user_type == 'superadmin') {
 			$userType = array('','superadmin'=>'superadmin','admin'=>'admin','employee'=>'employee');
 		}
+		$departments	= Department::orderby('name')->lists('name','id');
 		$userAll = User::orderBy('name')->paginate();
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		return View::make('users.index')->with(array(
 										'userAll'	=> $userAll,
 										'userType'	=> $userType,
-										'index'		=> $index
+										'index'		=> $index,
+										'departments' => $departments
 										));
 	}
 
@@ -82,6 +84,7 @@ class UsersController extends \BaseController {
 		} elseif(Auth::user()->user_type == 'superadmin') {
 			$userType = array('','superadmin'=>'superadmin','admin'=>'admin','employee'=>'employee');
 		}
+		$departments	= Department::orderby('name')->lists('name','id');
 		$userAll = User::orderBy('name')->paginate();
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		$userById = User::find($id);
@@ -89,7 +92,8 @@ class UsersController extends \BaseController {
 										'userById'	=> $userById,
 										'userAll'	=> $userAll,
 										'userType'	=> $userType,
-										'index'		=> $index
+										'index'		=> $index,
+										'departments' => $departments
 										));
 		// return View::make('users.edit');	
 	}
