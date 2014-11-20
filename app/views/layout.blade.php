@@ -128,7 +128,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<div class="col-md-12" style="margin-top:120px;text-align:center;">
+<div class="col-md-offset-3 col-md-6" style="margin-top:120px;text-align:center;">
             @if(Session::has('flash_message'))
                 {{ Session::get('flash_message') }}
             @endif
