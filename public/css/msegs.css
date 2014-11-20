@@ -498,6 +498,32 @@ table>thead>tr#returnstr {
     font-weight: normal;
 }
 
+.table>thead>tr#returnstr>th {
+    width: 12%;
+}
+
+table>tbody>tr#returnstr-movable {
+    background-color:transparent;
+    /*color:#000;*/
+    font-size: 0.9em;
+}
+
+table>thead>tr#returnstr-movable {
+    font-size: 0.80em;
+    font-weight: bold;
+
+}
+
+.table>thead>tr#returnstr-movable>th {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: normal;
+}
+
+.table>thead>tr#returnstr-movable>th {
+    width: 20%;
+}
+
 
 table>tbody>tr>td>textarea {
     border-color: #ecf0f1;

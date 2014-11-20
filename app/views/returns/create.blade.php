@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="input-group">
                                          <span class="input-group-addon officer-info-label">Present Enoluments</i></span>
-                                        {{ Form::text('present_pay',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in last pay']) }}
+                                        {{ Form::number('present_pay',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in last pay']) }}
                                     </div>    
                         </fieldset>
                                 </div>
@@ -127,10 +127,10 @@
                                                 <td>{{Form::textarea('add_subdivision','',['cols'=>'16','rows'=>'3','id'=>'add_subdivision','class'=>'form-control'])}}</td>
                                                 <td>{{Form::textarea('add_prop_details','',['cols'=>'16','rows'=>'3','id'=>'add_prop_details','class'=>'form-control'])}}</td>
                                                 <td>{{Form::textarea('add_cost','',['cols'=>'13','rows'=>'3','id'=>'add_cost','class'=>'form-control'])}}</td>
-                                                <td>{{Form::text('add_present_value','',['size'=>'9','id'=>'add_present_value','class'=>'form-control'])}}</td>
+                                                <td>{{Form::text('add_present_value','',['size'=>'9','id'=>'add_present_value','class'=>'form-control','maxlength'=>'12'])}}</td>
                                                 <td>{{Form::textarea('add_owner','',['cols'=>'13','rows'=>'3','id'=>'add_owner','class'=>'form-control'])}}</td>
                                                 <td>{{Form::textarea('add_how_acquired','',['cols'=>'13','rows'=>'3','id'=>'add_how_acquired','class'=>'form-control'])}}</td>
-                                                <td>{{Form::text('add_annual_income','',['size'=>'9','id'=>'add_annual_income','class'=>'form-control'])}}</td>
+                                                <td>{{Form::text('add_annual_income','',['size'=>'9','id'=>'add_annual_income','class'=>'form-control','maxlength'=>'12'])}}</td>
                                                 <td>{{Form::textarea('add_remarks','',['cols'=>'13','rows'=>'3','id'=>'add_remarks','class'=>'form-control'])}}</td>
                                                 <td>
                                                 <!-- <i class="btn-lg fa fa-plus fa-lg text-danger" id="btn_addrow"></i> -->
@@ -147,7 +147,7 @@
                                 <div class="table-responsive tab-pane fade" id='movable'>
                                     <table class="table table-hover table-striped table-bordered" id="movabletable">
                                         <thead>
-                                            <tr id="returnstr">
+                                            <tr id="returnstr-movable">
                                                 <th>Description of items</th>
                                                 <th>Price of value at the time of acquisition and or the total payments up to the date of return, as the
                                                 case may be, in case of articles purchased/on hire purchase or instalments basis.</th>
@@ -184,7 +184,7 @@
                         <!-- OTP -->
                         
                             <div class="col-md-2">
-                                <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-info"><i class="fa fa-key"></i> Generate OTP </button>
+                                <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-info"><i class="fa fa-clock-o fa-lg"></i> Generate OTP </button>
                             </div>
                             <div class="col-md-2">
                                     {{Form::text('otp',Input::old('otp'),['placeholder'=>'Enter OTP','id'=>'otp','class'=>'form-control hidden','required'])}}

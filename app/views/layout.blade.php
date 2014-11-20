@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head  profile="http://www.w3.org/2005/10/profile">
+        <link rel="icon" 
+        type="image/png" 
+        href="http://cdn.freefavicon.com/freefavicons/objects/boite-a-coche-checkbox-152-188866.png">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
