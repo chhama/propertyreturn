@@ -120,15 +120,15 @@ class PropertyController extends \BaseController {
         $message = 'One Time Password for Vigilance Property Submission: '.$otp;
         $phone = Auth::user()->mobile;
 
-         $post = curl_init();
-         curl_setopt($post, CURLOPT_URL, "http://sms2.gateway4sms.com/sendsms?uname=".urlencode('dict')."&pwd=".urlencode('Tk#c%I$52')."&senderid=".urlencode('VIGLMZ')."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
-         curl_exec($post);
-         curl_close($post);
-         		// return Response::json($message);
+        include("../app/config/local/sms.php");
+        
 
-        //echo "<a href=http://sms2.gateway4sms.com/sendsms?uname=".urlencode('dict')."&pwd=".urlencode('Tk#c%I$52')."&senderid=".urlencode('VIGLMZ')."&to=".$phone."&msg=".urlencode('One Time Password for submitting Property Returns form is $otp.')."&route=T>Click</a>";
-        //$this->sms->pushSMS(Input::get('phone'), $message);
-        //return Response::json(['status'=>'success', 'otp'=>$otp]);
+		$post = curl_init();
+		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+		//curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".urlencode($user)."&pwd=".urlencode($pass)."&senderid=".urlencode($sender)."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+		curl_exec($post);
+		curl_close($post);
+
     }
 
 
