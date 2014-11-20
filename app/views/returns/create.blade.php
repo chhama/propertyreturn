@@ -42,19 +42,19 @@
                                 <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Name of officer</i></span>
-                                        {{ Form::text('name_of_officer',Input::old('title',Auth::user()->name), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name']) }}
+                                        {{ Form::text('name_of_officer',Input::old('name_of_officer',Auth::user()->name), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name','required']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Service</i></span>
-                                        {{ Form::text('service',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'IAS/MES/MSS etc.']) }}
+                                        {{ Form::text('service',Input::old('service',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'IAS/MES/MSS etc.','required']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Date of first entry into Government service.</i></span>
-                                        {{ Form::text('date_of_entry',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record']) }}
+                                        {{ Form::text('date_of_entry',Input::old('date_of_entry',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record','required']) }}
                                     </div>
                                     <div class="input-group">
                                          <span class="input-group-addon officer-info-label">Date of Superannuation</i></span>
-                                        {{ Form::text('date_of_superannuation',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date']) }}
+                                        {{ Form::text('date_of_superannuation',Input::old('date_of_superannuation',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date','required']) }}
                                     </div>    
                            
                         </fieldset>
@@ -66,23 +66,23 @@
                                 <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
                                      <div class="input-group">
                                          <span class="input-group-addon officer-info-label">Present place of posting</i></span>
-                                        {{ Form::text('present_place_of_posting',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter office name']) }}
+                                        {{ Form::text('present_place_of_posting',Input::old('present_place_of_posting',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter office name','required']) }}
                                     </div> 
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Basic Pay</i></span>
-                                        {{ Form::text('basic_pay',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter basic pay in correct format']) }}
+                                        {{ Form::text('basic_pay',Input::old('basic_pay',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter basic pay in correct format','required']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Present post held</i></span>
-                                        {{ Form::text('present_post',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Designation']) }}
+                                        {{ Form::text('present_post',Input::old('present_post',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Designation','required']) }}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon officer-info-label">Pay Band and Grade Pay</i></span>
-                                        {{ Form::text('pay_band',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pay band followed by grade pay']) }}
+                                        {{ Form::text('pay_band',Input::old('pay_band',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pay band followed by grade pay','required']) }}
                                     </div>
                                     <div class="input-group">
                                          <span class="input-group-addon officer-info-label">Present Enoluments</i></span>
-                                        {{ Form::number('present_pay',Input::old('title',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in last pay']) }}
+                                        {{ Form::text('present_pay',Input::old('present_pay',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in last pay','required']) }}
                                     </div>    
                         </fieldset>
                                 </div>

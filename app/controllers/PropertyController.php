@@ -56,9 +56,26 @@ class PropertyController extends \BaseController {
 			$property->movable_property = json_encode(Input::only('movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
 			$property->immovable_property = json_encode(Input::except('service','present_place_of_posting','basic_pay','present_post','pay_band','present_pay','_token','name_of_officer','date_of_entry','date_of_superannuation','movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
 			// dd($property->movable_property);
-		} 
+			$input = ['user_id'=>$property->users_id,'place_of_posting'=>$property->present_place_of_posting,'basic_pay'=>$property->basic_pay,
+			'present_post'=>$property->present_post,'pay_band'=>$property->pay_band_and_grade_pay,'enolument'=>$property->present_enolument];
+			$validator = Validator::make(
+				$input,
+				['user_id' => 'required',
+				'place_of_posting' => 'required',
+				'basic_pay' => 'required',
+				'present_post' => 'required',
+				'pay_band' => 'required',
+				'enolument' => 'required|numeric']
+			);
+
+			if($validator->fails()){
+				return Redirect::back()->withErrors($validator);
+			}
+
 			if($property->save())
 				return Redirect::back();
+		} 
+
 
 		// $gaga = json_encode(Input::get('immovable_subdivision'));	
 		// echo $gaga;
