@@ -118,7 +118,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>Mobile</label>
-                                {{Form::text('mobile','',['class'=>'form-control','placeholder'=>'Mobile','id'=>'mobile','size'=>'10','data-validation-required-message'=>'Please enter Mobile.','required'])}}
+                                {{Form::text('mobile','',['class'=>'form-control','placeholder'=>'Mobile','id'=>'mobile','size'=>'10','data-validation-required-message'=>'Please enter Mobile.','maxlength'=>'10','required'])}}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

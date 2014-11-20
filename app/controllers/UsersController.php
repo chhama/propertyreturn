@@ -2,6 +2,10 @@
 
 class UsersController extends \BaseController {
 
+	public function __construct()
+	{
+		$this->beforeFilter('auth',['except'=>'login']);
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -17,6 +21,11 @@ class UsersController extends \BaseController {
 		$departments	= Department::orderby('name')->lists('name','id');
 		$userAll = User::orderBy('name')->paginate();
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
+		
+		if(Auth::user()->user_type == 'employee'){
+			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+		}
+		else
 		return View::make('users.index')->with(array(
 										'userAll'	=> $userAll,
 										'userType'	=> $userType,
@@ -33,6 +42,10 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
+		if(Auth::user()->user_type == 'employee'){
+			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+		}
+		else
 		return View::make('users.create');
 	}
 
@@ -51,11 +64,14 @@ class UsersController extends \BaseController {
 		$user->username 		= Input::get('username');
 		$user->password 		= Hash::make(Input::get('password'));
 		$user->user_type 		= Input::get('user_type');
+		$user->email 			= Input::get('email');
+		$user->department_id 	= Input::get('department_id');
 		$user->entry_into_service	= Input::get('entry_into_service');
 		$user->superannuation_date	= Input::get('superannuation_date');
 		$user->remember_token 	= Input::get('_token');
 		if($user->save())
-			return Redirect::back()->with(['flash_message'=>'User successfully created','msgtype'=>'success']);
+			return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>User successfully created</div>']);
+
 	}
 
 
@@ -88,6 +104,10 @@ class UsersController extends \BaseController {
 		$userAll = User::orderBy('name')->paginate();
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		$userById = User::find($id);
+		if(Auth::user()->user_type == 'employee'){
+			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+		}
+		else
 		return View::make('users.edit')->with(array(
 										'userById'	=> $userById,
 										'userAll'	=> $userAll,
@@ -114,6 +134,7 @@ class UsersController extends \BaseController {
 					'currentPassword' => 'required|exists:' . $user->getTable() . ',password',
 					'password' => 'required',
 					'password_confirm' => 'required|same:password',
+					
 				);
 
 			$validator = Validator::make(Input::all(), $rules);
@@ -135,10 +156,15 @@ class UsersController extends \BaseController {
 			$user->mobile 			= Input::get('mobile');
 			$user->username 		= Input::get('username');
 			$user->user_type 		= Input::get('user_type');
+			$user->email 			= Input::get('email');
+			$user->department_id	= Input::get('department_id');
 			$user->entry_into_service	= Input::get('entry_into_service');
 			$user->superannuation_date	= Input::get('superannuation_date');
 			if($user->save())
-				return Redirect::back()->with(['flash_message'=>'User successfully Updated','msgtype'=>'success']);
+				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>User successfully Updated</div>']);
+			else
+				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Error on Update</div>'])->withInput();
+
 		}
 	}
 
@@ -161,7 +187,12 @@ class UsersController extends \BaseController {
 				'password' => Input::get('password')
 			]);
 
-		if ($attempt) return Redirect::route('property.create');
+		if ($attempt) {
+			if(Auth::user()->user_type == 'employee')
+				return Redirect::route('property.create');
+			else 
+				return Redirect::route('dashboard.index');
+		}
 		else
 			return Redirect::to('/')->with(['flash_message'=>'Invalid Username or Password','msgtype'=>'danger'])->withInput();
 	}

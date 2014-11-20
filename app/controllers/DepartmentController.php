@@ -2,6 +2,11 @@
 
 class DepartmentController extends \BaseController {
 
+	public function __construct()
+	{
+		$this->beforeFilter('auth');
+	}
+	
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -11,6 +16,10 @@ class DepartmentController extends \BaseController {
 	{
 		$departmentAll = Department::orderBy('name')->paginate();
 		$index = $departmentAll->getPerPage() * ($departmentAll->getCurrentPage()-1) + 1;
+		if(Auth::user()->user_type == 'employee'){
+			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+		}
+		else
 		return View::make('departments.index')->with(array(
 										'departmentAll'	=> $departmentAll,
 										'index'		=> $index
@@ -66,6 +75,10 @@ class DepartmentController extends \BaseController {
 		$departmentAll = Department::orderBy('name')->paginate();
 		$index = $departmentAll->getPerPage() * ($departmentAll->getCurrentPage()-1) + 1;
 		$departmentById = Department::find($id);
+		if(Auth::user()->user_type == 'employee'){
+			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+		}
+		else
 		return View::make('departments.edit')->with(array(
 										'departmentById'	=> $departmentById,
 										'departmentAll'	=> $departmentAll,

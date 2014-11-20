@@ -21,6 +21,7 @@
     <!-- Custom Fonts -->
     {{ HTML::Style('font-awesome-4.1.0/css/font-awesome.min.css') }}
     {{ HTML::Style('css/bootstrap-datetimepicker.min.css') }}
+    {{ HTML::Style('css/chartist.min.css') }}
     
 <!-- 
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -46,6 +47,7 @@
     <!-- Contact Form JavaScript -->
     {{ HTML::Script('js/jqBootstrapValidation.js') }}
     <!-- <script src="js/contact_me.js"></script> -->
+    {{ HTML::Script('js/chartist.min.js') }}
 
     <!-- Custom Theme JavaScript -->
     {{ HTML::Script('js/msegs.js') }}
@@ -74,10 +76,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check()) 
                     
+                    @if(Auth::user()->user_type == 'employee')
                     <li class="page-scroll">
                         <a href="{{ URL::to('returns/create')}}">File Returns</a>
                     </li>
+                    @endif
                     @if(Auth::user()->user_type == 'superadmin' || Auth::user()->user_type == 'admin')
+                    <li class="page-scroll">
+                        <a href="{{ URL::route('dashboard.index')}}">Dashboard</a>
+                    </li>
                     <li class="page-scroll">
                         <a href="{{ URL::route('departments.index')}}">Departments</a>
                     </li>
@@ -116,16 +123,16 @@
                     @endif
                 </ul>
             </div>
-            <div class="pull-right" style="color:#FFF">
-            @if(Session::has('flash_message'))
-                {{ Session::get('flash_message') }}
-            @endif
-            </div>
+           
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+<div class="col-md-12" style="margin-top:120px;text-align:center;">
+            @if(Session::has('flash_message'))
+                {{ Session::get('flash_message') }}
+            @endif
+</div>
     @yield('container')
 
     <!-- Footer -->
