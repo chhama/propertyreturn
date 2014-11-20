@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration {
 			$table->string('name');
 			$table->string('mobile',11)->unique();
 			$table->date('entry_into_service');
+			$table->string('email');
+			$table->integer('department_id');
 			$table->date('superannuation_date');
 			$table->enum('user_type',['superadmin','admin','employee']);
 			$table->string('remember_token');

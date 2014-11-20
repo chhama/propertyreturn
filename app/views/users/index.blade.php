@@ -51,6 +51,11 @@
                                 <?php $slno++; ?>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10"> {{ $userAll->links() }}</td>
+                                </tr>
+                            </tfoot>
                         </table>
                 </div>
             </div>
@@ -68,6 +73,13 @@
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                     <!-- <form name="sentMessage" id="contactForm" novalidate> -->
                     {{Form::open(['route'=>'users.store','class'=>''])}}
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 controls">
+                                <label>Departments</label>
+                                {{Form::select('department_id',array('')+$departments,'',['class'=>'form-control','placeholder'=>'Departments','id'=>'department_id','data-validation-required-message'=>'Please Select Departments.','required'])}}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 controls">
                                 <label>User Type</label>
@@ -107,6 +119,13 @@
                             <div class="form-group col-xs-12 controls">
                                 <label>Mobile</label>
                                 {{Form::text('mobile','',['class'=>'form-control','placeholder'=>'Mobile','id'=>'mobile','size'=>'10','data-validation-required-message'=>'Please enter Mobile.','required'])}}
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 controls">
+                                <label>Email</label>
+                                {{Form::text('email','',['class'=>'form-control','placeholder'=>'Email','id'=>'email','size'=>'10','data-validation-required-message'=>'Please enter Email.','required'])}}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

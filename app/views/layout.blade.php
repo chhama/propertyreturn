@@ -79,6 +79,9 @@
                     </li>
                     @if(Auth::user()->user_type == 'superadmin' || Auth::user()->user_type == 'admin')
                     <li class="page-scroll">
+                        <a href="{{ URL::route('departments.index')}}">Departments</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="{{ URL::route('users.index')}}">Users</a>
                     </li>
                     @endif
@@ -112,16 +115,17 @@
                     </li>
                     @endif
                 </ul>
-                @if(Session::has('flash_message'))
-                    {{ Session::get('flash_message') }}
-                @endif
+            </div>
+            <div class="pull-right" style="color:#FFF">
+            @if(Session::has('flash_message'))
+                {{ Session::get('flash_message') }}
+            @endif
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
 
-    
     @yield('container')
 
     <!-- Footer -->
