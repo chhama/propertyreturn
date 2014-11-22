@@ -205,25 +205,7 @@
             </div>
         </div>
     </div>
-<!-- 
-<div class="modal fade" id="returnsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <div id="singlereturns"></div>
-                            <div id="single_movable"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+
 
 @stop
 
@@ -232,7 +214,7 @@
         <script language="javascript">
         
         $(function(){
-            $('select').change(function() {
+            $('#department_id').change(function() {
                     $.ajax({
                         type: 'get',
                         data: 'dept_id='+$(this).val(),
@@ -268,10 +250,10 @@
             $('#btn_get_returns').click(function(){
                 $.ajax({
                     type: 'get',
-                    data: 'user_id='+$("#select_officer_id").val(),
-                    url: 'getreturns',
+                    url: "getreturns?user_id="+$("#select_officer_id").val()+"&select_year="+$("#select_year_id").val(),
                     datatype: 'json',
                 }).success(function(officer){
+                    console.log(officer);
                     var immovable_row = '';
                     var movable_row = '';
                     if(officer.immovable_property==undefined && officer.movable_property==undefined){

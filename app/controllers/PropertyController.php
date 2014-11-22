@@ -18,7 +18,8 @@ class PropertyController extends \BaseController {
 
 	public function getreturns()
 	{
-		$data = Property::where("users_id","=",Input::get('user_id'))->where("returns_year","=",Input::get('select_year'))->leftJoin('users','property.users_id','=','users.id')->first();
+		// dd(Input::all());
+		$data = Property::where("users_id","=",Input::get("user_id"))->where("returns_year","=",Input::get("select_year"))->leftJoin('users','property.users_id','=','users.id')->first();
 		return Response::json($data);
 	}
 
