@@ -256,17 +256,26 @@
 
       
             $('#btn_get_returns').click(function(){
-                console.log($("#select_officer_id").val());
                 $.ajax({
                     type: 'get',
                     data: 'user_id='+$("#select_officer_id").val(),
                     url: 'getreturns',
                     datatype: 'json',
                 }).success(function(officer){
-                        var immovable = JSON.parse(officer.immovable_property);
-                        var movable = JSON.parse(officer.movable_property);
-                     
-                        console.log(officer);
+                    var immovable_row = '';
+                    var movable_row = '';
+                    if(officer.immovable_property==undefined && officer.movable_property==undefined){
+                        immovable_row = "<div class='btn alert-warning'>No record found for the search criteria given.</div>";
+                        movable_row = "";
+                    }
+                    else {
+
+                    var immovable = JSON.parse(officer.immovable_property);
+                    var movable = JSON.parse(officer.movable_property);
+                    
+
+                    
+
                     if(officer) {
                         
                     var immovable_row =   '<div class="panel panel-default col-lg-12">'
@@ -343,6 +352,8 @@
 
                     movable_row += '</tbody></table></div></div>';
 
+                }
+                    
 
 
                     $("#singlereturns").html(immovable_row);
