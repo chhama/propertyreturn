@@ -4,7 +4,7 @@ class PropertyController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth');
+		$this->beforeFilter('auth',['except'=>'getreturns']);
 	}
 	/**
 	 * Display a listing of the resource.
@@ -18,8 +18,7 @@ class PropertyController extends \BaseController {
 
 	public function getreturns()
 	{
-		$data = Property::where("users_id","=",Input::get('user_id'))->leftJoin('users','property.users_id','=','users.id')->first();
-		// dd($data);
+		$data = Property::where("users_id","=",Input::get('user_id'))->where("returns_year","=",Input::get('select_year'))->leftJoin('users','property.users_id','=','users.id')->first();
 		return Response::json($data);
 	}
 
@@ -57,6 +56,7 @@ class PropertyController extends \BaseController {
 			$property->present_post = Input::get('present_post');
 			$property->pay_band_and_grade_pay = Input::get('pay_band');
 			$property->present_enolument = Input::get('present_pay');
+			$property->returns_year = date('Y');
 			$property->movable_property = json_encode(Input::only('movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
 			$property->immovable_property = json_encode(Input::except('service','present_place_of_posting','basic_pay','present_post','pay_band','present_pay','_token','name_of_officer','date_of_entry','date_of_superannuation','movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
 			// dd($property->movable_property);

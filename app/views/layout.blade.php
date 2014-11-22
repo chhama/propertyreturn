@@ -47,7 +47,7 @@
     
     <!-- Contact Form JavaScript -->
     <!-- {{ HTML::Script('js/jqBootstrapValidation.js') }} -->
-    
+
     <!-- <script src="js/contact_me.js"></script> -->
     {{ HTML::Script('js/chartist.min.js') }}
 
@@ -150,25 +150,19 @@
                         <!-- <h3>Around the Web</h3> -->
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/pages/Mizoram-State-e-Governance-Society/642354645842199" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
+                         
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                <a href="http://msegs.mizoram.gov.in/" class="btn-social btn-outline"><i class="fa fa-fw fa-globe"></i></a>
                             </li>
                         </ul>
+                                                Developed by Mizoram State e-Governance Society
+
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Contact Information</h3>
-                        <p>Phone:0389-23232323 </p>
+                        <p>Phone: 0389-23232323 </p>
                         <p>Email: vigilance@mail.mizoram.gov.in</p>
                     </div>
                 </div>

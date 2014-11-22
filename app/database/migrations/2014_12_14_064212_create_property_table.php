@@ -21,6 +21,7 @@ class CreatePropertyTable extends Migration {
 			$table->string('present_post');
 			$table->string('pay_band_and_grade_pay',50);
 			$table->string('present_enolument');
+			$table->integer('returns_year')->length(4);
 			$table->longtext('movable_property');
 			$table->longtext('immovable_property');
 			$table->timestamps();

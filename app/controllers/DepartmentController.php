@@ -4,7 +4,7 @@ class DepartmentController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth');
+		$this->beforeFilter('auth',['except'=>'getemployeelist']);
 	}
 	
 	/**
@@ -30,11 +30,6 @@ class DepartmentController extends \BaseController {
 	public function getemployeelist()
 	{
 		$employees = User::where('department_id','=',Input::get('dept_id'))->where('user_type','=','employee')->get();
-
-
-		// foreach($employees as $employee):
-		// 	echo $employee." ";
-		// endforeach;
 		return Response::json($employees);
 	}
 	/**

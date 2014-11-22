@@ -38,18 +38,25 @@
                             <div class="form-group col-xs-12  controls">
                                 <h4>Select Department</h4>
                                 {{Form::select('dept_id',array('')+$departments,'',['class'=>'form-control','id'=>'department_id','required'])}}
-                                <!-- <label>Name</label> -->
-                                <!-- <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name."> -->
-                                <!-- <p class="help-block text-danger"></p> -->
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12  controls">
                                <div id="employeeholder"></div>
-                               <!--  <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                                 -->
-                                 <!-- <p class="help-block text-danger"></p> -->
+                            </div>
+                        </div>
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12  controls">
+                               <div id="returnsyear" class='hidden'>
+                                <select name="select_year" id="select_year_id" class="form-control" required="required">
+                                    <?php  
+                                        $thisyear=date('Y');
+                                        for($i=$thisyear;$i>=2000;$i--)
+                                            echo "<option value=".$i.">".$i."</option>";
+                                    ?>
+                                </select>
+                               </div>
                             </div>
                         </div>
                         
@@ -246,6 +253,9 @@
                         }
                         if(officers.length == 0) {
                             resultrow = '<div class="btn alert-warning">No officers in the department.</div>';
+                        }
+                        else {
+                            $("#returnsyear").removeClass('hidden');
                         }
                         $("#employeeholder").html(resultrow);
                 });
