@@ -27,6 +27,16 @@ class DepartmentController extends \BaseController {
 	}
 
 
+	public function getemployeelist()
+	{
+		$employees = User::where('department_id','=',Input::get('dept_id'))->where('user_type','=','employee')->get();
+
+
+		// foreach($employees as $employee):
+		// 	echo $employee." ";
+		// endforeach;
+		return Response::json($employees);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

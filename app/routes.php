@@ -25,5 +25,5 @@ Route::get('users/{id}/profile', array('uses'=>'UsersController@profile','as'=>'
 Route::get('property/{id}/otp', array('uses'=>'PropertyController@otp','as'=>'property.otp'));
 
 //Route::get('otp', function(){ dd('Hello'); });
-
+Route::get('getemployeelist', ['uses'=>'DepartmentController@getemployeelist','as'=>'getemployeelist']);
 Route::get('getreturns', ['uses'=>'PropertyController@getreturns','as'=>'getreturns']);

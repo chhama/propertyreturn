@@ -2,6 +2,7 @@
 
 @section('container')
 
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -34,17 +35,21 @@
                     <!-- <form name="sentMessage" id="contactForm" novalidate> -->
 
                         <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
-                                <p class="help-block text-danger"></p>
+                            <div class="form-group col-xs-12  controls">
+                                <h4>Select Department</h4>
+                                {{Form::select('dept_id',array('')+$departments,'',['class'=>'form-control','id'=>'department_id','required'])}}
+                                <!-- <label>Name</label> -->
+                                <!-- <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name."> -->
+                                <!-- <p class="help-block text-danger"></p> -->
                             </div>
                         </div>
                         <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Email Address</label>
+                            <div class="form-group col-xs-12  controls">
+                               <div id="employeeholder"></div>
+                               <!--  <label>Email Address</label>
                                 <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                                <p class="help-block text-danger"></p>
+                                 -->
+                                 <!-- <p class="help-block text-danger"></p> -->
                             </div>
                         </div>
                         
@@ -218,23 +223,49 @@
 
     @section('extrajs')
         <script language="javascript">
+        
         $(function(){
-            console.log("welcome to msegs");
-        });
+            $('select').change(function() {
+                    $.ajax({
+                        type: 'get',
+                        data: 'dept_id='+$(this).val(),
+                        url: 'getemployeelist',
+                        datatype: 'json',
+                    }).success(function(officers){
+                        var resultrow='';
+                        if(officers) {
+                            resultrow = '<select id="select_officer_id" name="select_officer" class="form-control">';
+                            var len = officers.length;
+                            for(var i=0;i<len;i++){
+                                resultrow += '<option value="'+officers[i].id+'">'+officers[i].name+'</option>';
+                            }
+                            resultrow +='</select>';
+                        }
+                        else{
+                            resultrow = 'No officers match the criteria given';
+                        }
+                        if(officers.length == 0) {
+                            resultrow = '<div class="btn alert-warning">No officers in the department.</div>';
+                        }
+                        $("#employeeholder").html(resultrow);
+                });
 
+
+            });
+        
+
+      
             $('#btn_get_returns').click(function(){
-                console.log('ll');
+                console.log($("#select_officer_id").val());
                 $.ajax({
                     type: 'get',
-                    data: 'user_id='+$("#name").val(),
+                    data: 'user_id='+$("#select_officer_id").val(),
                     url: 'getreturns',
                     datatype: 'json',
                 }).success(function(officer){
                         var immovable = JSON.parse(officer.immovable_property);
                         var movable = JSON.parse(officer.movable_property);
-                        // var pit = {immovable_property: "{"immovable_subdivision":["a","b","c","d"],"immovable_prop_details":["a","b ","c","d"],"immovable_cost":["a","b","c","d"],"immovable_present_value":["a","b","c","d"],"immovable_owner":["a","b","c","d"],"immovable_how_acquired":["a","b","c","d"],"immovable_annual_income":["a","b","c","d"],"immovable_remarks":["a","b","c","d"],"add_subdivision":"e","add_prop_details":"e","add_cost":"e","add_present_value":"e","add_owner":"e","add_how_acquired":"e","add_annual_income":"e","add_remarks":"e "}"};
-                        // document.write(movable.movable_description[0]);
-                        // document.write(immovable.immovable_subdivision[1]);
+                     
                         console.log(officer);
                     if(officer) {
                         
@@ -274,7 +305,6 @@
                         }
                     }
                     
-                    // document.write(immovable_row);
                 }
 
               
@@ -322,5 +352,6 @@
                     // console.log(data.immovable_property);
                 });
             });
+});
         </script>
     @stop

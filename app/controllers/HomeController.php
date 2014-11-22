@@ -18,7 +18,16 @@ class HomeController extends BaseController {
 	
 	public function home()
 	{
-		return View::make('frontend.index');
+				$departments	= Department::orderby('name')->lists('name','id');
+				$userAll = User::orderBy('name')->paginate();
+				$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
+				return View::make('frontend.index')->with(array(
+										'userAll'	=> $userAll,
+										'index'		=> $index,
+										'departments' => $departments
+										));
+
+		// return View::make('frontend.index');
 	}
 
 }

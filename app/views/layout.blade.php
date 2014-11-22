@@ -44,8 +44,10 @@
    
     {{ HTML::Script('js/classie.js') }}
     {{ HTML::Script('js/cbpAnimatedHeader.js') }}
+    
     <!-- Contact Form JavaScript -->
-    {{ HTML::Script('js/jqBootstrapValidation.js') }}
+    <!-- {{ HTML::Script('js/jqBootstrapValidation.js') }} -->
+    
     <!-- <script src="js/contact_me.js"></script> -->
     {{ HTML::Script('js/chartist.min.js') }}
 

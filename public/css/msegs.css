@@ -139,6 +139,10 @@ header .intro-text .skills {
     font-weight: 300;
 }
 
+.stat-panel>.panel-body {
+    color:#000;
+}
+
 @media(min-width:768px) {
     header .container {
         padding-top: 200px;

@@ -158,6 +158,8 @@
     </div>
 </section>
 <script>
+
+
     $('#datetimepicker1').datetimepicker({
         step: 5
     });
