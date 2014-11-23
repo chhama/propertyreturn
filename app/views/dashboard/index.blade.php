@@ -4,7 +4,7 @@
 
     <!-- Header -->
     <header class="form">
-        <div class="container">
+        <div class="container" id="dashboardcontainer">
             <div class="row">
             <h2>Dashboard</h2>
                 <div class="col-lg-12">
@@ -21,7 +21,6 @@
             </div>
         </div>
     </header>
-
     <!-- View Returns Section -->
     <section id="view">
         <div class="container">

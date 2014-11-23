@@ -6,8 +6,8 @@
  ?>
 
 
-<a class="btn btn-lg btn-success" href="#">
-  <i class="fa fa-users fa-2x pull-left"></i>  {{ $officers }} Officers </a>
-<p></p>
-<a class="btn btn-lg btn-info" href="#">
-  <i class="fa fa-university fa-2x pull-left"></i>  {{ $totaldept }} Departments </a>
+<a class="btn btn-lg btn-success col-xs-12" href="users">
+  <i class="fa fa-users fa-3x pull-left"></i>  {{ $officers }} Officers </a>
+<div class="clearfix"><p></p></div>
+<a class="btn btn-lg btn-info col-xs-12" href="departments">
+  <i class="fa fa-university fa-3x pull-left"></i>  {{ $totaldept }} Departments </a>

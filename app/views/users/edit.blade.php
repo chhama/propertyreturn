@@ -127,14 +127,20 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12  controls">
                                 <label>Entry Into Service</label>
-                                {{Form::text('entry_into_service',null,['class'=>'form-control','placeholder'=>'Entry Into Service','id'=>'datetimepicker1','size'=>'10','data-validation-required-message'=>'Please enter Entry Into Service.','required'])}}
+                                <div class="input-group">    
+                                    {{Form::text('entry_into_service',null,['class'=>'form-control','placeholder'=>'Entry Into Service','id'=>'datetimepicker1','size'=>'10','data-validation-required-message'=>'Please enter Entry Into Service.','required'])}}
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12  controls">
                                 <label>Superannuation Date</label>
-                                {{ Form::text('superannuation_date',null, ['class'=>'form-control','id'=>'datetimepicker2','required','placeholder'=>'Superannuation Date','required']) }}
+                                <div class="input-group">    
+                                    {{ Form::text('superannuation_date',null, ['class'=>'form-control','id'=>'datetimepicker2','required','placeholder'=>'Superannuation Date','required']) }}
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
