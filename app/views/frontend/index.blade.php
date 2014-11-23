@@ -197,6 +197,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="modal-body">
+                        <a class="fa fa-print fa-3x pull-right href=window.print() "></a>
+                        <a class="fa fa-file-pdf-o fa-3x pull-right href=window.print() "></a>
                             <div id="singlereturns"></div>
                             <div id="single_movable"></div>
                         </div>
@@ -271,7 +273,7 @@
                     if(officer) {
                         
                     var immovable_row =   '<div class="panel panel-default col-lg-12">'
-                                    +'<div class="panel-heading"><h4>Annual Statement of Property as on 31<sup>st</sup> December '+new Date().getFullYear()+'</h4>'
+                                    +'<div class="panel-dheading"><h4>Annual Statement of Property as on 31<sup>st</sup> December '+$("#select_year_id").val()+'</h4>'
                                     +'</div>'
                                     +'<div class="panel-body">'
                                     +'<table class="table table-hover table-striped table-bordered">'
