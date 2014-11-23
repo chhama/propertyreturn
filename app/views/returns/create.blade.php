@@ -34,60 +34,87 @@
                 <div class="col-lg-12">
                     <div class="intro-text">
                         <span class="formheader-small">File your returns </span>
-                        <!-- <hr class="star-light"> -->
-                        {{Form::open(['route'=>'property.store','method'=>'POST','id'=>'returns_form'])}}
-                                <div class="col-md-6 tp10">
-                        <fieldset>
-                            <div class="form-group">
-                                <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
-                                    <div class="input-group">
-                                        <span class="input-group-addon officer-info-label">Name of officer</i></span>
-                                        {{ Form::text('name_of_officer',Input::old('name_of_officer',Auth::user()->name), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter name as in the service record','id'=>'officer_name','required']) }}
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon officer-info-label">Service</i></span>
-                                        {{ Form::text('service',Input::old('service',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'IAS/MES/MSS etc.','required']) }}
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon officer-info-label">Date of first entry into Government service.</i></span>
-                                        {{ Form::text('date_of_entry',Input::old('date_of_entry',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in your service record','required']) }}
-                                    </div>
-                                    <div class="input-group">
-                                         <span class="input-group-addon officer-info-label">Date of Superannuation</i></span>
-                                        {{ Form::text('date_of_superannuation',Input::old('date_of_superannuation',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pension date','required']) }}
-                                    </div>    
-                           
-                        </fieldset>
+                    </div>
+
+                    {{Form::open(['route'=>'property.store','method'=>'POST','id'=>'returns_form','class'=>'form-horizontal'])}}
+                        <div class="col-md-6 tp10">
+                            
+                            <fieldset>
+                            
+                                <div class="form-group">
+                                    <!-- <div class="input-group"> -->
+                                        <!-- <span class="input-group-addon officer-info-label control-label col-md-9">Name of officer</span> -->
+                                        <label for="name_of_officer" class="control-label col-xs-5 pull-left">Name</label>
+                                            <div class="col-xs-7">
+                                                {{ Form::text('name_of_officer',Input::old('name_of_officer',Auth::user()->name), ['class'=>'form-control','id'=>'officer_name','required','disabled']) }}   
+                                            </div>
+                                    <!-- </div> -->
                                 </div>
 
-                                <div class="col-md-6 tp10">
-                        <fieldset>
-                            <div class="form-group">
-                                <!-- {{ Form::label('title', 'Title', ['class'=>'col-md-12 control-label']) }} -->
-                                     <div class="input-group">
-                                         <span class="input-group-addon officer-info-label">Present place of posting</i></span>
-                                        {{ Form::text('present_place_of_posting',Input::old('present_place_of_posting',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter office name','required']) }}
-                                    </div> 
-                                    <div class="input-group">
-                                        <span class="input-group-addon officer-info-label">Basic Pay</i></span>
-                                        {{ Form::text('basic_pay',Input::old('basic_pay',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Enter basic pay in correct format','required']) }}
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon officer-info-label">Present post held</i></span>
-                                        {{ Form::text('present_post',Input::old('present_post',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Designation','required']) }}
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon officer-info-label">Pay Band and Grade Pay</i></span>
-                                        {{ Form::text('pay_band',Input::old('pay_band',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'Pay band followed by grade pay','required']) }}
-                                    </div>
-                                    <div class="input-group">
-                                         <span class="input-group-addon officer-info-label">Present Enoluments</i></span>
-                                        {{ Form::text('present_pay',Input::old('present_pay',null), ['class'=>'form-control officer-info-input', 'placeholder'=>'As in last pay','required']) }}
-                                    </div>    
-                        </fieldset>
+                                <div class="form-group">
+                                     <label for="service" class="control-label col-xs-5 pull-left">Service</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('service',Input::old('service',null), ['class'=>'form-control', 'placeholder'=>'IAS/MES/MSS etc.','required']) }}
+                                        </div>
                                 </div>
-            <br>
+                                
+                                <div class="form-group">
+                                    <label for="date_of_entry" class="control-label col-xs-5 pull-left">Date of first entry into Government Service</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('date_of_entry',Input::old('date_of_entry',date("d-m-Y",strtotime(Auth::user()->entry_into_service))), ['class'=>'form-control', 'placeholder'=>'As in your service record','required','disabled']) }}
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                     <label for="date_of_superannuation" class="control-label col-xs-5 pull-left">Date of Superannuation</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('date_of_superannuation',Input::old('date_of_superannuation',date("d-m-Y",strtotime(Auth::user()->superannuation_date))), ['class'=>'form-control', 'placeholder'=>'Pension date','required','disabled']) }}
+                                        </div>
+                                </div>    
+                            </fieldset>
+
+                        </div>
+
+                    <div class="col-md-6 tp10">
+                        <fieldset>
                            
+                                <div class="form-group">
+                                     <label for="present_place_of_posting" class="control-label col-xs-5 pull-left">Present place of posting</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('present_place_of_posting',Input::old('present_place_of_posting',null), ['class'=>'form-control', 'placeholder'=>'Enter office name','required']) }}
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                     <label for="basic_pay" class="control-label col-xs-5 pull-left">Basic Pay</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('basic_pay',Input::old('basic_pay',null), ['class'=>'form-control', 'placeholder'=>'Enter basic pay in correct format','required']) }}
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="present_post" class="control-label col-xs-5 pull-left">Present post held</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('present_post',Input::old('present_post',null), ['class'=>'form-control', 'placeholder'=>'Designation','required']) }}
+                                        </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="pay_band" class="control-label col-xs-5 pull-left">Pay Band</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('pay_band',Input::old('pay_band',null), ['class'=>'form-control', 'placeholder'=>'Pay band followed by grade pay','required']) }}
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="present_pay" class="control-label col-xs-5 pull-left">Present Enoluments</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('present_pay',Input::old('present_pay',null), ['class'=>'form-control', 'placeholder'=>'As in last pay','required']) }}
+                                        </div>
+                                </div>
+                        </fieldset>
+                    </div>
+            <hr>
 
                             <ul class="nav-tabs nav" role='tablist'>
                                 <li class="active"><a href="#immovable" data-toggle="tab">Immovable Property</a></li>
