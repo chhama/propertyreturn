@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <!-- <div class="input-group"> -->
                                         <!-- <span class="input-group-addon officer-info-label control-label col-md-9">Name of officer</span> -->
-                                        <label for="name_of_officer" class="control-label col-xs-5 pull-left">Name</label>
+                                        <label for="name_of_officer" class="control-label col-xs-5 text-left">Name</label>
                                             <div class="col-xs-7">
                                                 {{ Form::text('name_of_officer',Input::old('name_of_officer',Auth::user()->name), ['class'=>'form-control','id'=>'officer_name','required','disabled']) }}   
                                             </div>
@@ -52,25 +52,25 @@
                                 </div>
 
                                 <div class="form-group">
-                                     <label for="service" class="control-label col-xs-5 pull-left">Service</label>
-                                        <div class="col-xs-7">
-                                            {{ Form::text('service',Input::old('service',null), ['class'=>'form-control', 'placeholder'=>'IAS/MES/MSS etc.','required']) }}
-                                        </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="date_of_entry" class="control-label col-xs-5 pull-left">Date of first entry into Government Service</label>
+                                    <label for="date_of_entry" class="control-label col-xs-5 text-left">Date of first entry into Government Service</label>
                                         <div class="col-xs-7">
                                             {{ Form::text('date_of_entry',Input::old('date_of_entry',date("d-m-Y",strtotime(Auth::user()->entry_into_service))), ['class'=>'form-control', 'placeholder'=>'As in your service record','required','disabled']) }}
                                         </div>
                                 </div>
 
                                 <div class="form-group">
-                                     <label for="date_of_superannuation" class="control-label col-xs-5 pull-left">Date of Superannuation</label>
+                                     <label for="date_of_superannuation" class="control-label col-xs-5 text-left">Date of Superannuation</label>
                                         <div class="col-xs-7">
                                             {{ Form::text('date_of_superannuation',Input::old('date_of_superannuation',date("d-m-Y",strtotime(Auth::user()->superannuation_date))), ['class'=>'form-control', 'placeholder'=>'Pension date','required','disabled']) }}
                                         </div>
                                 </div>    
+                               
+                                <div class="form-group">
+                                     <label for="service" class="control-label col-xs-5 text-left">Service</label>
+                                        <div class="col-xs-7">
+                                            {{ Form::text('service',Input::old('service',null), ['class'=>'form-control', 'placeholder'=>'IAS/MES/MSS etc.','required']) }}
+                                        </div>
+                                </div>
                             </fieldset>
 
                         </div>
@@ -79,36 +79,36 @@
                         <fieldset>
                            
                                 <div class="form-group">
-                                     <label for="present_place_of_posting" class="control-label col-xs-5 pull-left">Present place of posting</label>
-                                        <div class="col-xs-7">
+                                     <label for="present_place_of_posting" class="control-label col-xs-4 text-left">Present place of posting</label>
+                                        <div class="col-xs-8">
                                             {{ Form::text('present_place_of_posting',Input::old('present_place_of_posting',null), ['class'=>'form-control', 'placeholder'=>'Enter office name','required']) }}
                                         </div>
                                 </div>
 
                                 <div class="form-group">
-                                     <label for="basic_pay" class="control-label col-xs-5 pull-left">Basic Pay</label>
-                                        <div class="col-xs-7">
+                                     <label for="basic_pay" class="control-label col-xs-4 text-left">Basic Pay</label>
+                                        <div class="col-xs-8">
                                             {{ Form::text('basic_pay',Input::old('basic_pay',null), ['class'=>'form-control', 'placeholder'=>'Enter basic pay in correct format','required']) }}
                                         </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="present_post" class="control-label col-xs-5 pull-left">Present post held</label>
-                                        <div class="col-xs-7">
+                                    <label for="present_post" class="control-label col-xs-4 text-left">Present post held</label>
+                                        <div class="col-xs-8">
                                             {{ Form::text('present_post',Input::old('present_post',null), ['class'=>'form-control', 'placeholder'=>'Designation','required']) }}
                                         </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="pay_band" class="control-label col-xs-5 pull-left">Pay Band</label>
-                                        <div class="col-xs-7">
+                                    <label for="pay_band" class="control-label col-xs-4 text-left">Pay Band</label>
+                                        <div class="col-xs-8">
                                             {{ Form::text('pay_band',Input::old('pay_band',null), ['class'=>'form-control', 'placeholder'=>'Pay band followed by grade pay','required']) }}
                                         </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="present_pay" class="control-label col-xs-5 pull-left">Present Enoluments</label>
-                                        <div class="col-xs-7">
+                                    <label for="present_pay" class="control-label col-xs-4 text-left">Present Enoluments</label>
+                                        <div class="col-xs-8">
                                             {{ Form::text('present_pay',Input::old('present_pay',null), ['class'=>'form-control', 'placeholder'=>'As in last pay','required']) }}
                                         </div>
                                 </div>

@@ -585,3 +585,7 @@ div.input-group>.officer-info-input {
 .createuser-row {
     margin-top: 20px;
 }
+
+.form-group>.text-left {
+    text-align: left;
+}
