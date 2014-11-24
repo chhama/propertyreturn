@@ -58,20 +58,34 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$user = new User();
-		$user->emp_id 			= Input::get('emp_id');
-		$user->name 			= Input::get('name');
-		$user->mobile 			= Input::get('mobile');
-		$user->username 		= Input::get('username');
-		$user->password 		= Hash::make(Input::get('password'));
-		$user->user_type 		= Input::get('user_type');
-		$user->email 			= Input::get('email');
-		$user->department_id 	= Input::get('department_id');
-		$user->entry_into_service	= Input::get('entry_into_service');
-		$user->superannuation_date	= Input::get('superannuation_date');
-		$user->remember_token 	= Input::get('_token');
-		if($user->save())
-			return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>User successfully created</div>']);
+		$credentials = array(
+				'username' 	=> 'required|unique:'.$user->getTable().',username',
+				'emp_id' 	=> 'required|unique:'.$user->getTable().',emp_id',
+				'password'	=> 'required'
+				);
+		$validator	= Validator::make(Input::all(),$credentials);
+		if($validator->fails()){
+			return Redirect::to('users')
+								->withErrors($validator)
+								->withInput(Input::all())
+								->with(['flash_message'=>'Username & Employee ID should be unique']);
+		} else {
+			$user = new User();
+			$user->emp_id 			= Input::get('emp_id');
+			$user->name 			= Input::get('name');
+			$user->mobile 			= Input::get('mobile');
+			$user->username 		= Input::get('username');
+			$user->password 		= Hash::make(Input::get('password'));
+			$user->user_type 		= Input::get('user_type');
+			$user->email 			= Input::get('email');
+			$user->department_id 	= Input::get('department_id');
+			$user->entry_into_service	= Input::get('entry_into_service');
+			$user->superannuation_date	= Input::get('superannuation_date');
+			$user->remember_token 	= Input::get('_token');
+			if($user->save())
 
+			return Redirect::back()->with(['flash_message'=>'User successfully created']);
+		}
 	}
 
 
@@ -127,45 +141,41 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$user = User::find($id);
-		$password = Input::get('password');
-		if(isset($password)){
-			$rules = array(
-					'currentPassword' => 'required|exists:' . $user->getTable() . ',password',
-					'password' => 'required',
-					'password_confirm' => 'required|same:password',
-					
-				);
+		$user = new User;
 
-			$validator = Validator::make(Input::all(), $rules);
+		$rules = array(
+			'username' => 'required|unique:' . $user->getTable() . ',username,' . $id,
+			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id
+			);
 
-			if ($validator->fails()) {
-				return Redirect::route('users.changepassword',$id)
-					->withErrors($validator)
-					->withInput(Input::all());
-			}
-			else {
-				$user->password			= Hash::make(Input::get('password'));
-				if($user->save())
-					return Redirect::back()->with(['flash_message'=>'Password successfully Updated','msgtype'=>'success']);
-			}
+		$validator = Validator::make(Input::all(), $rules);
 
+		if($validator->fails()){
+			return Redirect::route('users.edit', $id)
+				->withErrors($validator)
+				->withInput(Input::all())
+				->with(['flash_message'=>'Username OR Employee ID already exist']);
 		} else {
+			$user = User::find($id);
 			$user->emp_id 			= Input::get('emp_id');
 			$user->name 			= Input::get('name');
 			$user->mobile 			= Input::get('mobile');
 			$user->username 		= Input::get('username');
-			$user->user_type 		= Input::get('user_type');
+			if(strlen(Input::get('password')) > 0)
+				$user->password 	= Hash::make(Input::get('password'));
 			$user->email 			= Input::get('email');
+			$user->user_type 		= Input::get('user_type');
 			$user->department_id	= Input::get('department_id');
 			$user->entry_into_service	= Input::get('entry_into_service');
 			$user->superannuation_date	= Input::get('superannuation_date');
 			if($user->save())
-				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>User successfully Updated</div>']);
+				return Redirect::back()->with(['flash_message'=>'User successfully Updated']);
 			else
-				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Error on Update</div>'])->withInput();
-
+				return Redirect::back()->with(['flash_message'=>'Error on Update'])->withInput();
 		}
+
+
+	
 	}
 
 
@@ -202,19 +212,54 @@ class UsersController extends \BaseController {
 		return Redirect::to('/');
 	}
 
-	public function changePassword($id){
-		$userById = User::find($id);
-		return View::make('users.changepassword')->with(array('userById'=>$userById));
-	}
+	// public function changePassword($id){
+	// 	$userById = User::find($id);
+	// 	return View::make('users.changepassword')->with(array('userById'=>$userById));
+	// }
 
 	public function profile($id)
 	{	
 		$userById = User::find($id);
 		return View::make('users.profile')->with(array(
 										'userById'	=> $userById
-										));
-		// return View::make('users.edit');	
+										));	
 	}
+
+	public function updateProfile($id){
+
+		$user = new User;
+
+		$rules = array(
+			'username' => 'required|unique:' . $user->getTable() . ',username,' . $id,
+			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id
+			);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::route('users.updateprofile', $id)
+				->withErrors($validator)
+				->withInput(Input::all())
+				->with(['flash_message'=>'Username OR Employee ID already exist']);
+		} else {
+			$user = User::find($id);
+			$user->emp_id 			= Input::get('emp_id');
+			$user->name 			= Input::get('name');
+			$user->mobile 			= Input::get('mobile');
+			$user->username 		= Input::get('username');
+			if(strlen(Input::get('password')) > 0)
+				$user->password 	= Hash::make(Input::get('password'));
+			$user->email 			= Input::get('email');
+			$user->entry_into_service	= Input::get('entry_into_service');
+			$user->superannuation_date	= Input::get('superannuation_date');
+			if($user->save())
+				return Redirect::back()->with(['flash_message'=>'User successfully Updated']);
+			else
+				return Redirect::back()->with(['flash_message'=>'Error on Update'])->withInput();
+		}
+
+	}
+
 
 
 }

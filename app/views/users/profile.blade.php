@@ -15,7 +15,7 @@
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                 <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
                 <!-- <form name="sentMessage" id="contactForm" novalidate> -->
-                {{ Form::model($userById,array('url'=>route('users.update',$userById->id),'method'=>'put','class'=>'')) }}
+                {{ Form::model($userById,array('url'=>route('users.updateprofile',$userById->id),'method'=>'put','class'=>'')) }}
                     <div class="row control-group">
                         <div class="form-group col-xs-12 controls">
                             <label>Employee ID</label>
@@ -34,6 +34,13 @@
                         <div class="form-group col-xs-12  controls">
                             <label>Username</label>
                             {{Form::text('username',null,['class'=>'form-control','placeholder'=>'Username','id'=>'username','size'=>'10','data-validation-required-message'=>'Please enter Name.','readonly'])}}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 controls">
+                            <label>Password</label>
+                            {{Form::password('password',['class'=>'form-control','placeholder'=>'Password','id'=>'password','size'=>'10','data-validation-required-message'=>'Please enter Password.'])}}
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>

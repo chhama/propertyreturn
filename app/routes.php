@@ -21,6 +21,7 @@ Route::resource('users','UsersController');
 Route::resource('departments','DepartmentController'); 
 Route::post('login', array('uses'=>'UsersController@login','as'=>'login'));
 Route::get('users/{id}/changepassword', array('uses'=>'UsersController@changePassword','as'=>'users.changepassword'));
+Route::put('users/{id}/updateprofile', array('uses'=>'UsersController@updateProfile','as'=>'users.updateprofile'));
 Route::get('users/{id}/profile', array('uses'=>'UsersController@profile','as'=>'users.profile'));
 Route::get('property/{id}/otp', array('uses'=>'PropertyController@otp','as'=>'property.otp'));
 
