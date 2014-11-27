@@ -106,7 +106,8 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12  controls">
                                 <label>Username</label>
-                                {{Form::text('username',null,['class'=>'form-control','placeholder'=>'Username','id'=>'username','size'=>'10','data-validation-required-message'=>'Please enter Username.','readonly'])}}
+                                <?php if(Auth::user()->user_type == 'superadmin') { $usertype = ""; } else { $usertype = "readonly"; } ?>
+                                {{Form::text('username',null,['class'=>'form-control','placeholder'=>'Username','id'=>'username','size'=>'10','data-validation-required-message'=>'Please enter Username.', $usertype])}}
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
