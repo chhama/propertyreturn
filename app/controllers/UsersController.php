@@ -23,7 +23,7 @@ class UsersController extends \BaseController {
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		
 		if(Auth::user()->user_type == 'employee'){
-			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+			return Redirect::to('/')->with(['flash_message'=>'You are not authorized to view the page']);
 		}
 		else
 		return View::make('users.index')->with(array(
@@ -43,7 +43,7 @@ class UsersController extends \BaseController {
 	public function create()
 	{
 		if(Auth::user()->user_type == 'employee'){
-			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+			return Redirect::to('/')->with(['flash_message'=>'You are not authorized to view the page']);
 		}
 		else
 		return View::make('users.create');
@@ -119,7 +119,7 @@ class UsersController extends \BaseController {
 		$index = $userAll->getPerPage() * ($userAll->getCurrentPage()-1) + 1;
 		$userById = User::find($id);
 		if(Auth::user()->user_type == 'employee'){
-			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>You are not authorized to view the page</div>']);
+			return Redirect::to('/')->with(['flash_message'=>'You are not authorized to view the page']);
 		}
 		else
 		return View::make('users.edit')->with(array(
@@ -204,7 +204,7 @@ class UsersController extends \BaseController {
 				return Redirect::route('dashboard.index');
 		}
 		else
-			return Redirect::to('/')->with(['flash_message'=>'<div class="alert alert-warning alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Invalid Username or Password</div>'])->withInput();
+			return Redirect::to('/')->with(['flash_message'=>'Invalid Username or Password'])->withInput();
 	}
 
 	public function logout(){
