@@ -237,7 +237,7 @@ class UsersController extends \BaseController {
 
 		$rules = array(
 			'username' => 'required|unique:' . $user->getTable() . ',username,' . $id,
-			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id
+			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id,
 			'mobile' => 'required|unique:' . $user->getTable() . ',mobile,' . $id
 			);
 
