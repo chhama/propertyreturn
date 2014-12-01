@@ -69,7 +69,7 @@ class UsersController extends \BaseController {
 			return Redirect::to('users')
 								->withErrors($validator)
 								->withInput(Input::all())
-								->with(['flash_message'=>'Username & Employee ID should be unique']);
+								->with(['flash_message'=>'Username, Employee ID, Mobile should be unique']);
 		} else {
 			$user = new User();
 			$user->emp_id 			= Input::get('emp_id');
@@ -238,6 +238,7 @@ class UsersController extends \BaseController {
 		$rules = array(
 			'username' => 'required|unique:' . $user->getTable() . ',username,' . $id,
 			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id
+			'mobile' => 'required|unique:' . $user->getTable() . ',mobile,' . $id
 			);
 
 		$validator = Validator::make(Input::all(), $rules);
