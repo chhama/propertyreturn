@@ -81,7 +81,11 @@ class PropertyController extends \BaseController {
 			$user->last_filed_year = date("Y-m-d H:i:s");
 			if($property->save() && $user->save())
 				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Property Returns submitted successfully.</div>']);
-		} 
+			else
+				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-warning"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Property Returns submission failed.</div>']);
+
+		}
+
 
 
 		// $gaga = json_encode(Input::get('immovable_subdivision'));	

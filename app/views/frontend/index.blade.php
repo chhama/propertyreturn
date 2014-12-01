@@ -2,7 +2,7 @@
 
 @section('container')
 
-
+<div class="non-printable">
     <!-- Header -->
     <header>
         <div class="container">
@@ -181,11 +181,11 @@
         </div>
     </section>
 
-    
+</div>
     <!-- Returns Modal -->
 
 
- <div class="portfolio-modal modal fade scrollable dismissible" id="returnsmodal" role="dialog"  aria-hidden="false">
+ <div class="portfolio-modal modal fade scrollable dismissible printable" id="returnsmodal" role="dialog"  aria-hidden="true">
         <div class="modal-content" id="content-modal">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -197,10 +197,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="modal-body">
-                        <a class="fa fa-print fa-3x pull-right href=window.print() "></a>
-                        <a class="fa fa-file-pdf-o fa-3x pull-right href=window.print() "></a>
-                            <div id="singlereturns"></div>
-                            <div id="single_movable"></div>
+                        <a class="fa fa-print fa-3x pull-right" id="btn_print"></a>
+                        <a class="fa fa-file-pdf-o fa-3x pull-right" ></a>
+                            <div id="returnsprint">
+                                <div id="singlereturns"></div>
+                                <div id="single_movable"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -243,10 +245,14 @@
                         }
                         $("#employeeholder").html(resultrow);
                 });
-
+                
+                $('#btn_print').click(function(){
+                    $('#returnsprint').printElement();
+                });
 
             });
         
+    
 
       
             $('#btn_get_returns').click(function(){

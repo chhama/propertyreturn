@@ -596,3 +596,11 @@ div.input-group>.officer-info-input {
 .form-group>.text-left {
     text-align: left;
 }
+
+.printable { display: none; }
+
+@media print
+{
+    .non-printable { display: none; }
+    .printable { display: block; }
+}

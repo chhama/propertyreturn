@@ -54,6 +54,7 @@
     <!-- Custom Theme JavaScript -->
     {{ HTML::Script('js/msegs.js') }}
     {{ HTML::Script('js/bootstrap-datetimepicker.min.js') }}
+    {{ HTML::script('js/jquery.printElement.js') }}
     @yield('extrajs')
 </head>
 
