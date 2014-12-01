@@ -132,7 +132,7 @@
     </nav>
 <div class="col-md-offset-3 col-md-6" style="margin-top:120px;text-align:center;">
     @if(Session::has('flash_message'))
-        <div class="alert alert-success alert-dismissible">
+        <div class="alert alert-info alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
             </button>{{ Session::get('flash_message') }}

@@ -61,6 +61,7 @@ class UsersController extends \BaseController {
 		$credentials = array(
 				'username' 	=> 'required|unique:'.$user->getTable().',username',
 				'emp_id' 	=> 'required|unique:'.$user->getTable().',emp_id',
+				'mobile' 	=> 'required|unique:'.$user->getTable().',mobile',
 				'password'	=> 'required'
 				);
 		$validator	= Validator::make(Input::all(),$credentials);
@@ -145,7 +146,8 @@ class UsersController extends \BaseController {
 
 		$rules = array(
 			'username' => 'required|unique:' . $user->getTable() . ',username,' . $id,
-			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id
+			'emp_id' => 'required|unique:' . $user->getTable() . ',emp_id,' . $id,
+			'mobile' => 'required|unique:' . $user->getTable() . ',mobile,' . $id
 			);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -154,7 +156,7 @@ class UsersController extends \BaseController {
 			return Redirect::route('users.edit', $id)
 				->withErrors($validator)
 				->withInput(Input::all())
-				->with(['flash_message'=>'Username OR Employee ID already exist']);
+				->with(['flash_message'=>'Username, Employee ID, Mobile already exist']);
 		} else {
 			$user = User::find($id);
 			$user->emp_id 			= Input::get('emp_id');
@@ -219,10 +221,14 @@ class UsersController extends \BaseController {
 
 	public function profile($id)
 	{	
-		$userById = User::find($id);
-		return View::make('users.profile')->with(array(
-										'userById'	=> $userById
-										));	
+		if(Auth::user()->id == $id){
+			$userById = User::find($id);
+			return View::make('users.profile')->with(array(
+											'userById'	=> $userById
+											));	
+		} else {
+			return Redirect::to('/')->with(['flash_message'=>'You Are Not Authorized']);
+		}
 	}
 
 	public function updateProfile($id){
@@ -240,7 +246,7 @@ class UsersController extends \BaseController {
 			return Redirect::route('users.updateprofile', $id)
 				->withErrors($validator)
 				->withInput(Input::all())
-				->with(['flash_message'=>'Username OR Employee ID already exist']);
+				->with(['flash_message'=>'Username, Employee ID, Mobile already exist']);
 		} else {
 			$user = User::find($id);
 			$user->emp_id 			= Input::get('emp_id');
