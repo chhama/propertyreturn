@@ -32,8 +32,12 @@ class PropertyController extends \BaseController {
 	public function create()
 	{
 				// return View::make('property.create');
-
-		return View::make('returns/create');
+		$latest_year_filed = DB::table("property")->where("users_id","=",Auth::user()->id)->select('returns_year')->first();
+		// dd($latest_year_filed);
+		if ($latest_year_filed != NULL && $latest_year_filed->returns_year == date('Y'))
+			return View::make('returns/submitted');		
+		else 
+			return View::make('returns/create');
 	}
 
 
