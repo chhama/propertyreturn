@@ -24,6 +24,8 @@ Route::get('users/{id}/changepassword', array('uses'=>'UsersController@changePas
 Route::put('users/{id}/updateprofile', array('uses'=>'UsersController@updateProfile','as'=>'users.updateprofile'));
 Route::get('users/{id}/profile', array('uses'=>'UsersController@profile','as'=>'users.profile'));
 Route::get('property/{id}/otp', array('uses'=>'PropertyController@otp','as'=>'property.otp'));
+Route::get('forgotpassword', ['uses'=>'UsersController@forgotpassword','as'=>'forgotpassword']);
+Route::post('submitforgot', ['uses'=>'UsersController@submitforgot','as'=>'submitforgot']);
 
 //Route::get('otp', function(){ dd('Hello'); });
 Route::get('getemployeelist', ['uses'=>'DepartmentController@getemployeelist','as'=>'getemployeelist']);

@@ -4,7 +4,7 @@ class UsersController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth',['except'=>'login']);
+		$this->beforeFilter('auth',['except'=>['login','forgotpassword','submitforgot']]);
 	}
 	/**
 	 * Display a listing of the resource.
@@ -214,10 +214,10 @@ class UsersController extends \BaseController {
 		return Redirect::to('/');
 	}
 
-	// public function changePassword($id){
-	// 	$userById = User::find($id);
-	// 	return View::make('users.changepassword')->with(array('userById'=>$userById));
-	// }
+	/*public function changePassword($id){
+		$userById = User::find($id);
+		return View::make('users.changepassword')->with(array('userById'=>$userById));
+	}*/
 
 	public function profile($id)
 	{	
@@ -265,6 +265,29 @@ class UsersController extends \BaseController {
 				return Redirect::back()->with(['flash_message'=>'Error on Update'])->withInput();
 		}
 
+	}
+
+	public function forgotpassword(){
+		return View::make('users.forgotpassword');
+	}
+
+	public function submitforgot(){
+		$username = Input::get('username');
+		$password = Input::get('password');
+		$mobile = Input::get('mobile');
+
+		$userId = User::where('username','=',$username)
+						->where('mobile','=',$mobile)
+						->pluck('id');
+		if($userId) {
+			$user = User::find($userId);
+			$user->password = Hash::make($password);
+			$user->save();
+
+			return Redirect::back()->with(['flash_message'=>'Password Successfully Reset. Please Loggin'])->withInput();	
+		} else {
+			return Redirect::back()->with(['flash_message'=>'Username and Mobile No is not Match.'])->withInput();	
+		}
 	}
 
 
