@@ -61,7 +61,7 @@
 <body id="page-top" class="index">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" style="padding-bottom:0px;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -121,7 +121,8 @@
                             {{Form::password('password',['class'=>'form-control','size'=>'10','required'])}}
                         </div>
                         {{Form::submit('Login',['class'=>'btn btn-default'])}}
-                        {{Form::close()}}                
+                        <br><div class="pull-right" style="color:#FFF;font-size:10px; padding-top:10px;"><a href="./forgotpassword">Forgot Password</a></div>
+                        {{Form::close()}}
                     </li>
                     @endif
                 </ul>
