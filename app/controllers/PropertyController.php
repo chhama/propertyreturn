@@ -165,7 +165,17 @@ class PropertyController extends \BaseController {
 
     public function notify()
     {
-    	return Redirect::back()->with('flash_message','Reminder sent successfully.');
+    	$phones=Input::get('mobile_list');
+    	$year=date('Y');
+    	include("../app/config/local/sms.php");
+    	$post = curl_init();
+		curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$phones."&msg=".urlencode("Reminder: Please file your annual property returns by 10-10-$year")."&route=T");
+		//curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".urlencode($user)."&pwd=".urlencode($pass)."&senderid=".urlencode($sender)."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+		if(curl_exec($post))
+		{
+			curl_close($post);
+	    	return Redirect::back()->with('flash_message','Reminder sent successfully.');
+    	}
     }
 
 
