@@ -163,5 +163,10 @@ class PropertyController extends \BaseController {
 
     }
 
+    public function notify()
+    {
+    	return Redirect::back()->with('flash_message','Reminder sent successfully.');
+    }
+
 
 }

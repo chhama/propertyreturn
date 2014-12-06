@@ -71,12 +71,45 @@
 					}
 				  ]
 				};
+				var options = {
+  
+};
 
 				// In the global name space Chartist we call the Line function to initialize a line chart
 				// As a first parameter we pass in a selector where we would like to get our chart created
 				// Second parameter is the actual data object
-					Chartist.Line('.my-chart', data);
+					Chartist.Line('.ct-chart', data,options);
+					console.log(data);
 
+					var $chart = $('.ct-chart');
+
+var $toolTip = $chart
+  .append('<div class="tooltip"></div>')
+  .find('.tooltip')
+  .hide();
+
+$chart.on('mouseenter', '.ct-point', function() {
+  var $point = $(this),
+    value = $point.attr('ct:value'),
+    seriesName = $point.parent().attr('ct:series-name');
+
+  $point.animate({'stroke-width': '50px'}, 300, easeOutQuad);
+  $toolTip.html(seriesName + '<br>' + value).show();
+});
+
+$chart.on('mouseleave', '.ct-point', function() {
+  var $point = $(this);
+
+  $point.animate({'stroke-width': '20px'}, 300, easeOutQuad);
+  $toolTip.hide();
+});
+
+$chart.on('mousemove', function(event) {
+  $toolTip.css({
+    left: (event.offsetX || event.originalEvent.layerX) - $toolTip.width() / 2 - 10,
+    top: (event.offsetY || event.originalEvent.layerY) - $toolTip.height() - 40
+  });
+});
 			});
 
 

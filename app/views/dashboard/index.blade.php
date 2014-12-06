@@ -8,11 +8,11 @@
             <div class="row">
             <h2>Dashboard</h2>
                 <div class="col-lg-12">
-                <div class="panel panel-default stat-panel  my-chart ct-perfect-fourth">
+                <div class="panel panel-default stat-panel ">
                     <div class="panel-heading">
                         Total returns filed for the month of {{date('F')}}, {{date('Y')}}
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body ct-chart ct-double-octave">
                         @include('stats.infograph')
                     </div>
                 </div>

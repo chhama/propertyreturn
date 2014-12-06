@@ -19,4 +19,9 @@
 	
 
 	$defaulters->links();
+
+	
  ?>
+ 	{{ Form::open(['route'=>'property.notify','method'=>'post','id'=>'returns_notify','class'=>'form-horizontal']) }}
+	{{Form::submit('Send reminder',['class'=>'form-control btn btn-success'])}}
+	{{Form::close()}}

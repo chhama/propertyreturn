@@ -24,7 +24,7 @@ Route::get('users/{id}/changepassword', array('uses'=>'UsersController@changePas
 Route::put('users/{id}/updateprofile', array('uses'=>'UsersController@updateProfile','as'=>'users.updateprofile'));
 Route::get('users/{id}/profile', array('uses'=>'UsersController@profile','as'=>'users.profile'));
 Route::get('property/{id}/otp', array('uses'=>'PropertyController@otp','as'=>'property.otp'));
-
+Route::post('property/notify',['uses'=>'PropertyController@notify','as'=>'property.notify']);
 //Route::get('otp', function(){ dd('Hello'); });
 Route::get('getemployeelist', ['uses'=>'DepartmentController@getemployeelist','as'=>'getemployeelist']);
 Route::get('getreturns', ['uses'=>'PropertyController@getreturns','as'=>'getreturns']);
