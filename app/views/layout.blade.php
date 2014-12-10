@@ -73,7 +73,6 @@
                 </button>
                 <a class="navbar-brand" href="/">Property Returns Online</a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -127,7 +126,6 @@
                     @endif
                 </ul>
             </div>
-           
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -179,6 +177,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+                        {{ Hash::make('pass') }}
+
                         Copyright &copy; Vigilance Department, Government of Mizoram {{date('Y')}}
                     </div>
                 </div>

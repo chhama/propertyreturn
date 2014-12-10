@@ -273,18 +273,27 @@ class UsersController extends \BaseController {
 
 	public function submitforgot(){
 		$username = Input::get('username');
-		$password = Input::get('password');
+		$pass = rand(1000,9999);
 		$mobile = Input::get('mobile');
 
 		$userId = User::where('username','=',$username)
 						->where('mobile','=',$mobile)
 						->pluck('id');
 		if($userId) {
+			include("../app/config/local/sms.php");
+			$post = curl_init();
+			curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".$user."&pwd=".$password."&senderid=".$sender."&to=".$mobile."&msg=".urlencode("Your temporary password is $pass. Change it on your next login.")."&route=T");
+			//curl_setopt($post, CURLOPT_URL, "$url/sendsms?uname=".urlencode($user)."&pwd=".urlencode($pass)."&senderid=".urlencode($sender)."&to=".$phone."&msg=".urlencode("One Time Password for submitting Property Returns form is $otp.")."&route=T");
+			curl_exec($post);
+			curl_close($post);
+
 			$user = User::find($userId);
-			$user->password = Hash::make($password);
+			$user->password = Hash::make($pass);
 			$user->save();
 
-			return Redirect::back()->with(['flash_message'=>'Password Successfully Reset. Please Loggin'])->withInput();	
+
+
+			return Redirect::back()->with(['flash_message'=>'Password Successfully Reset And New Password is Send to Your Mobile'])->withInput();	
 		} else {
 			return Redirect::back()->with(['flash_message'=>'Username and Mobile No is not Match.'])->withInput();	
 		}

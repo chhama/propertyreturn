@@ -30,13 +30,6 @@
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12  controls">
-                            <label>New Password</label>
-                            {{Form::password('password',['class'=>'form-control','placeholder'=>'New Password','id'=>'newpassword','size'=>'10','data-validation-required-message'=>'Please enter New Password.','required'])}}
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
                     <br>
                     <div id="success"></div>
                     <div class="row">
