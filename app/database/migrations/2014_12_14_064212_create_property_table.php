@@ -24,7 +24,7 @@ class CreatePropertyTable extends Migration {
 			$table->integer('returns_year')->length(4);
 			$table->longtext('movable_property');
 			$table->longtext('immovable_property');
-			$table->string('status');
+			$table->enum('status',['Submitted','Examined','Approved','Rejected']);
 			$table->timestamps();
 		});
 	}

@@ -6,7 +6,7 @@
  ?>
 
 
-<a class="btn btn-lg btn-success col-xs-12" href="users">
+<a class="btn btn-lg btn-success col-xs-12" href="property">
   <i class="fa fa-users fa-3x pull-left"></i>  {{ $officers }} Officers </a>
 <div class="clearfix"><p></p></div>
 <a class="btn btn-lg btn-info col-xs-12" href="departments">

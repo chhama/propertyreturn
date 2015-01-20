@@ -13,7 +13,12 @@ class PropertyController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('property.index');
+		$propertySubmitted = Property::where("status",'=','Submitted')->orderBy('created_at')->paginate();
+		$index = $propertySubmitted->getPerPage() * ($propertySubmitted->getCurrentPage()-1) + 1;
+		return View::make('returns.index')->with(array(
+											'propertySubmitted'=>$propertySubmitted,
+											'index'	=> $index
+											));
 	}
 
 	public function getreturns()

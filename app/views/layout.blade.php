@@ -177,8 +177,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        {{ Hash::make('pass') }}
-
                         Copyright &copy; Vigilance Department, Government of Mizoram {{date('Y')}}
                     </div>
                 </div>
