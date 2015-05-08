@@ -183,5 +183,27 @@ class PropertyController extends \BaseController {
     	}
     }
 
+    public function pendingreturns()
+    {
+    	$pendingReturns = Property::where("status",'=','Submitted')->orderBy('created_at')->paginate(2);
+
+    	return View::make('returns.pending')->with(['pendingReturns'=>$pendingReturns]);
+    }
+
+    public function examine($id)
+    {
+    	$property = Property::find($id);
+    	$userid=$property->users_id;
+    	$officer = User::find($userid);
+    	return View::make('returns.examine',compact('property','officer'));
+    }
+
+    public function finalize()
+    {
+    	if(\Request::input('approve_btn'))
+    	dd(\Request::all());
+    	else
+    		echo 'j';
+    }
 
 }

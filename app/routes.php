@@ -16,6 +16,8 @@ Route::get('/', ['uses'=>'HomeController@home','as'=>'home']);
 Route::resource('sessions', 'SessionsController');
 Route::get('returns/create', array('uses'=>'PropertyController@create','as'=>'returns.create'));
 Route::resource('dashboard','DashboardController');
+Route::get('property/examine/{id}',['uses'=>'PropertyController@examine','as'=>'property.examine']);
+Route::post('property.finalize',['uses'=>'PropertyController@finalize','as'=>'property.finalize']);
 Route::resource('property','PropertyController');
 Route::resource('users','UsersController'); 
 Route::resource('departments','DepartmentController'); 
@@ -30,3 +32,4 @@ Route::post('property/notify',['uses'=>'PropertyController@notify','as'=>'proper
 //Route::get('otp', function(){ dd('Hello'); });
 Route::get('getemployeelist', ['uses'=>'DepartmentController@getemployeelist','as'=>'getemployeelist']);
 Route::get('getreturns', ['uses'=>'PropertyController@getreturns','as'=>'getreturns']);
+Route::get('pendingreturns',['uses'=>'PropertyController@pendingreturns','as'=>'pendingreturns']);
