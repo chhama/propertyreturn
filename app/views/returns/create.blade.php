@@ -35,7 +35,7 @@
                     <div class="intro-text">
                         <span class="formheader-small">File your returns </span>
                     </div>
-
+                    
                     {{Form::open(['route'=>'property.store','method'=>'POST','id'=>'returns_form','class'=>'form-horizontal'])}}
                         <div class="col-md-6 tp10">
                             
@@ -132,7 +132,7 @@
                                                 <th>Cost of acquirement of land with date/cost of the building constn. with date of starting the work and date of completion.</th>
                                                 <th>Present Value</th>
                                                 <th>Name of Owner. If not in own name, state in whose name held and his/her relationship to the Govt. Servant</th>
-                                                <th>How acquired whether by purchase, lease**, mortgate, inheritance, gift or otherwise, and eate of acquisition & name with details of person(s) from whom acquired.</th>
+                                                <th>How acquired whether by purchase, lease**, mortgate, inheritance, gift or otherwise, and date of acquisition & name with details of person(s) from whom acquired.</th>
                                                 <th>Annual income from the property</th>
                                                 <th>Remarks</th>
                                                 <th>Action</th>
@@ -150,6 +150,64 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <tr>
+                                                <td colspan='9'><strong>Returns for the previous year</strong></td>
+                                            </tr>
+
+                                            <?php 
+                                                    $old_immovable = json_decode($old_immovable);
+                                                    $old_movable = json_decode($old_movable);
+                                                        // dd($old_immovable);
+
+                                             ?>
+
+                                            <?php 
+
+                                                if(isset($old_immovable->immov_subdiv_old)){
+                                                    for($i=0;$i<count($old_immovable->immov_subdiv_old);$i++){
+                                                        echo "<tr id='old_immove".$i."'><td><input type='text' name='immov_subdiv_old[]' value='".$old_immovable->immov_subdiv_old[$i]."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_prop_details_old[]' value='".$old_immovable->immov_prop_details_old[$i]."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_cost_old[]' value='".$old_immovable->immov_cost_old[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_present_value_old[]' value='".$old_immovable->immov_present_value_old[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_owner_old[]' value='".$old_immovable->immov_owner_old[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_how_acq_old[]' value='".$old_immovable->immov_how_acq_old[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_annual_income_old[]' value='".$old_immovable->immov_annual_income_old[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_remarks_old[]' value='".$old_immovable->immov_remarks_old[$i]."'  readonly class='nobg' size=10></td>";
+                                                    echo '<td><button class="btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm" onclick="deleteImmovableRow(this)"> Remove</button></td></tr>';
+                                                    }
+                                                }
+
+
+                                                if(isset($old_immovable->immovable_subdivision)){
+                                                    for($i=0;$i<count($old_immovable->immovable_subdivision);$i++){
+                                                        echo "<tr id='old_immove".$i."'><td><input type='text' name='immov_subdiv_old[]' value='".$old_immovable->immovable_subdivision[$i]."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_prop_details_old[]' value='".$old_immovable->immovable_prop_details[$i]."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_cost_old[]' value='".$old_immovable->immovable_cost[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_present_value_old[]' value='".$old_immovable->immovable_present_value[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_owner_old[]' value='".$old_immovable->immovable_owner[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_how_acq_old[]' value='".$old_immovable->immovable_how_acquired[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_annual_income_old[]' value='".$old_immovable->immovable_annual_income[$i]."'  readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_remarks_old[]' value='".$old_immovable->immovable_remarks[$i]."'  readonly class='nobg' size=10></td>";
+                                                    echo '<td><button class="btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm" onclick="deleteImmovableRow(this)"> Remove</button></td></tr>';
+                                                    }
+                                                }
+
+                                                if(isset($old_immovable->add_subdivision)){
+                                                    echo "<tr><td><input type='text' name='immov_subdiv_old[]' value='".$old_immovable->add_subdivision."' readonly class='nobg' size=10></td>
+                                                        <td> <input type='text' name='immov_prop_details_old[]' value='".$old_immovable->add_prop_details."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_cost_old[]' value='".$old_immovable->add_cost."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_present_value_old[]' value='".$old_immovable->add_present_value."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_owner_old[]' value='".$old_immovable->add_owner."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_how_acq_old[]' value='".$old_immovable->add_how_acquired."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_annual_income_old[]' value='".$old_immovable->add_annual_income."'  readonly class='nobg'  size=10></td>
+                                                        <td> <input type='text' name='immov_remarks_old[]' value='".$old_immovable->add_remarks."'  readonly class='nobg'  size=10></td>
+                                                        <td><button class='btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm' onclick='deleteImmovableRow(this)'> Remove</button></td></tr>";
+                                                }
+
+                                             ?>
+                                            <tr>
+                                                <td colspan='9'><strong>Returns for the current year</strong></td>
+                                            </tr>
                                             <tr>
                                                 <td>{{Form::textarea('add_subdivision','',['cols'=>'16','rows'=>'3','id'=>'add_subdivision','class'=>'form-control'])}}</td>
                                                 <td>{{Form::textarea('add_prop_details','',['cols'=>'16','rows'=>'3','id'=>'add_prop_details','class'=>'form-control'])}}</td>
@@ -194,6 +252,34 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td colspan='6'><strong>Returns for the previous year</strong></td>
+                                            </tr>
+                                               <?php 
+                                                    if(isset($old_movable->movable_desc_old)){
+                                                        for($i=0;$i<count($old_movable->movable_desc_old[$i]);$i++) {
+                                                            echo "<tr id='old_move".$i."'><td><input type='text' name='movable_desc_old[]' value='".$old_movable->movable_desc_old[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_price_old[]' value='".$old_movable->movable_price_old[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_in_whose_name_old[]' value='".$old_movable->movable_in_whose_name_old[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_how_acq_old[]' value='".$old_movable->movable_how_acq_old[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_remarks_old[]' value='".$old_movable->movable_remarks_old[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><button class='btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm' onclick='deleteMovableRow(this)'> Remove</button></td></tr>";
+
+                                                        }
+                                                    }
+                                                    if(isset($old_movable->add_movable_description)){
+                                                        echo "<tr><td><input type='text' name='movable_desc_old[]' value='".$old_movable->add_movable_description."' readonly class='nobg' size=10></td>
+                                                        <td><input type='text' name='movable_price_old[]' value='".$old_movable->add_movable_price."' readonly class='nobg' size=10></td>
+                                                        <td><input type='text' name='movable_in_whose_name_old[]' value='".$old_movable->add_movable_in_whose_name."' readonly class='nobg' size=10></td>
+                                                        <td><input type='text' name='movable_how_acq_old[]' value='".$old_movable->add_movable_how_acquired."' readonly class='nobg' size=10></td>
+                                                        <td><input type='text' name='movable_remarks_old[]' value='".$old_movable->add_movable_remarks."' readonly class='nobg' size=10></td>
+                                                        <td><button class='btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm' onclick='deleteMovableRow(this)'> Remove</button></td></tr>";
+
+                                                    }
+                                             ?>
+                                             <tr>
+                                                <td colspan='6'><strong>Returns for the current year<strong></td>
+                                            </tr>
+                                            <tr>
                                                 <td>{{Form::textarea('add_movable_description','',['cols'=>'20','rows'=>'3','id'=>'add_movable_description','class'=>'form-control'])}}</td>
                                                 <td>{{Form::textarea('add_movable_price','',['cols'=>'20','rows'=>'3','id'=>'add_movable_price','class'=>'form-control'])}}</td>
                                                 <td>{{Form::textarea('add_movable_in_whose_name','',['cols'=>'20','rows'=>'3','id'=>'add_movable_in_whose_name','class'=>'form-control'])}}</td>
@@ -210,14 +296,15 @@
                         
                         <!-- OTP -->
                         
-                            <div class="col-md-2">
+                           <!--  <div class="col-md-2">
                                 <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-info"><i class="fa fa-clock-o fa-lg"></i> Generate OTP </button>
                             </div>
                             <div class="col-md-2">
                                     {{Form::text('otp',Input::old('otp'),['placeholder'=>'Enter OTP','id'=>'otp','class'=>'form-control hidden','required'])}}
                             </div>
+ -->                        
                         <div class="col-md-2">
-                                {{Form::Submit('Submit',['id'=>'submitbutton','class'=>'btn btn-primary form-control hidden','style'=>'width:120px;'])}}
+                                {{Form::Submit('Submit',['id'=>'submitbutton','class'=>'btn btn-primary form-control ','style'=>'width:120px;'])}}
                         </div>
                     {{Form::close()}}
                     </div>
@@ -323,6 +410,18 @@
 
     @section('extrajs')
     <script language="javascript">
+
+            function deleteMovableRow(r) {
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("movabletable").deleteRow(i);
+            }
+
+            function deleteImmovableRow(r) {
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("immovabletable").deleteRow(i);
+            }
+
+
         $(function() {
             $("#officer_name").focus();
             var movRowNum = 0;
@@ -367,8 +466,12 @@
 
             });
 
+            
+
           
      });
+
+
     </script>
     @stop
 

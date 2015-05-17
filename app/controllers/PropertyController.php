@@ -36,13 +36,18 @@ class PropertyController extends \BaseController {
 	 */
 	public function create()
 	{
-				// return View::make('property.create');
-		$latest_year_filed = DB::table("property")->where("users_id","=",Auth::user()->id)->select('returns_year')->first();
-		// dd($latest_year_filed);
+		$latest_year_filed = DB::table("property")->where("users_id","=",Auth::user()->id)->select('returns_year')->orderBy('returns_year','desc')->first();
+
+		$old_immovable = Property::where('returns_year','=',$latest_year_filed->returns_year)->where('users_id',"=",Auth::user()->id)->pluck('immovable_property');
+		$old_movable = Property::where('returns_year','=',$latest_year_filed->returns_year)->where('users_id',"=",Auth::user()->id)->pluck('movable_property');
+		//->where('id','=',Auth::user()->id)->get();
+		// $old_property_json=json_decode($old_property);
+		// $pp=json_decode ($old_property_json[0]->movable_property);
+		
 		if ($latest_year_filed != NULL && $latest_year_filed->returns_year == date('Y'))
 			return View::make('returns/submitted');		
 		else 
-			return View::make('returns/create');
+			return View::make('returns/create',compact('old_movable','old_immovable'));
 	}
 
 
@@ -53,7 +58,8 @@ class PropertyController extends \BaseController {
 	 */
 	public function store()
 	{
-		
+		// echo '<pre>';
+		// dd(Input::all());
 		$sessionOTP	= Session::get('otp');
 		$enterOTP	= Input::get('otp');
 		if($sessionOTP == $enterOTP){
@@ -67,8 +73,8 @@ class PropertyController extends \BaseController {
 			$property->pay_band_and_grade_pay = Input::get('pay_band');
 			$property->present_enolument = Input::get('present_pay');
 			$property->returns_year = date('Y');
-			$property->movable_property = json_encode(Input::only('movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
-			$property->immovable_property = json_encode(Input::except('service','present_place_of_posting','basic_pay','present_post','pay_band','present_pay','_token','name_of_officer','date_of_entry','date_of_superannuation','movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
+			$property->movable_property = json_encode(Input::only('movable_desc_old','movable_price_old','movable_in_whose_name_old','movable_how_acq_old','movable_remarks_old','movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks'));
+			$property->immovable_property = json_encode(Input::except('service','present_place_of_posting','basic_pay','present_post','pay_band','present_pay','_token','name_of_officer','date_of_entry','date_of_superannuation','movable_desc_old','movable_price_old','movable_in_whose_name_old','movable_how_acq_old','movable_remarks_old','movable_description','movable_price','movable_in_whose_name','movable_how_acquired','movable_remarks','add_movable_description','add_movable_price','add_movable_in_whose_name','add_movable_how_acquired','add_movable_remarks','otp'));
 			// dd($property->movable_property);
 			$input = ['user_id'=>$property->users_id,'place_of_posting'=>$property->present_place_of_posting,'basic_pay'=>$property->basic_pay,
 			'present_post'=>$property->present_post,'pay_band'=>$property->pay_band_and_grade_pay,'enolument'=>$property->present_enolument];
@@ -185,7 +191,7 @@ class PropertyController extends \BaseController {
 
     public function pendingreturns()
     {
-    	$pendingReturns = Property::where("status",'=','Submitted')->orderBy('created_at')->paginate(2);
+    	$pendingReturns = Property::where("status",'=','Submitted')->orderBy('created_at')->paginate(10);
 
     	return View::make('returns.pending')->with(['pendingReturns'=>$pendingReturns]);
     }
@@ -195,15 +201,24 @@ class PropertyController extends \BaseController {
     	$property = Property::find($id);
     	$userid=$property->users_id;
     	$officer = User::find($userid);
-    	return View::make('returns.examine',compact('property','officer'));
+    	$this_year=$property->returns_year;
+    	$previous_property=Property::where('users_id','=',$userid)->where('returns_year','!=',$this_year)->orderBy('returns_year','desc')->first();
+    	// dd($previous_property);
+    	return View::make('returns.examine',compact('property','officer','previous_property'));
     }
 
     public function finalize()
     {
+    	$property=Property::find(Input::get('property_id'));
     	if(\Request::input('approve_btn'))
-    	dd(\Request::all());
+    			$property->status='Approved';
     	else
-    		echo 'j';
+    		if(\Request::input('reject_btn'))
+    			$property->status='Rejected';
+
+    	if($property->save())
+    	return Redirect::route('pendingreturns');
+
     }
 
 }

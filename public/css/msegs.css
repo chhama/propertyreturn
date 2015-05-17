@@ -568,6 +568,7 @@ header.form>.container-fluid {
 
 .forminstructions {
     text-align: justify;
+    margin: 10px;
 }
 
 div.input-group>.officer-info-label {
