@@ -94,48 +94,51 @@
 							
 							$item = json_decode($property->immovable_property);
 
-							$old_item=json_decode($previous_property->immovable_property);
-							echo "<tr><td colspan=8><strong>Returns from the previous year filed</strong></td></tr>";
-							/*
-							Returns for the previous year filed
-							*/
+							if(isset($previous_property)) {
+							
+								$old_item=json_decode($previous_property->immovable_property);
+								echo "<tr><td colspan=8><strong>Returns from the previous year filed</strong></td></tr>";
+								/*
+								Returns for the previous year filed
+								*/
 
-							if(isset($old_item->immov_subdiv_old)){
-									$lngth = count($old_item->immov_subdiv_old);
-									
-									for($i=0;$i<$lngth;$i++){
-										echo "<tr><td>".$old_item->immov_subdiv_old[$i]."</td><td>".$old_item->immov_prop_details_old[$i]."</td><td>"
-										.$old_item->immov_cost_old[$i]."</td><td>".$old_item->immov_present_value_old[$i]."</td><td>"
-										.$old_item->immov_owner_old[$i]."</td><td>".$old_item->immov_how_acq_old[$i]."</td><td>"
-										.$old_item->immov_annual_income_old[$i]."</td><td>".$old_item->immov_remarks_old[$i]."</td></tr>";
+								if(isset($old_item->immov_subdiv_old)){
+										$lngth = count($old_item->immov_subdiv_old);
+										
+										for($i=0;$i<$lngth;$i++){
+											echo "<tr><td>".$old_item->immov_subdiv_old[$i]."</td><td>".$old_item->immov_prop_details_old[$i]."</td><td>"
+											.$old_item->immov_cost_old[$i]."</td><td>".$old_item->immov_present_value_old[$i]."</td><td>"
+											.$old_item->immov_owner_old[$i]."</td><td>".$old_item->immov_how_acq_old[$i]."</td><td>"
+											.$old_item->immov_annual_income_old[$i]."</td><td>".$old_item->immov_remarks_old[$i]."</td></tr>";
 
+									}
 								}
-							}
 
 
-							if(isset($old_item->immovable_subdivision)){
-									$lngth = count($old_item->immovable_subdivision);
-									
-									for($i=0;$i<$lngth;$i++){
-										echo "<tr><td>".$old_item->immovable_subdivision[$i]."</td><td>".$old_item->immovable_prop_details[$i]."</td><td>"
-										.$old_item->immovable_cost[$i]."</td><td>".$old_item->immovable_present_value[$i]."</td><td>"
-										.$old_item->immovable_owner[$i]."</td><td>".$old_item->immovable_how_acquired[$i]."</td><td>"
-										.$old_item->immovable_annual_income[$i]."</td><td>".$old_item->immovable_remarks[$i]."</td></tr>";
+								if(isset($old_item->immovable_subdivision)){
+										$lngth = count($old_item->immovable_subdivision);
+										
+										for($i=0;$i<$lngth;$i++){
+											echo "<tr><td>".$old_item->immovable_subdivision[$i]."</td><td>".$old_item->immovable_prop_details[$i]."</td><td>"
+											.$old_item->immovable_cost[$i]."</td><td>".$old_item->immovable_present_value[$i]."</td><td>"
+											.$old_item->immovable_owner[$i]."</td><td>".$old_item->immovable_how_acquired[$i]."</td><td>"
+											.$old_item->immovable_annual_income[$i]."</td><td>".$old_item->immovable_remarks[$i]."</td></tr>";
 
+									}
 								}
+
+
+								echo "<tr><td>".$old_item->add_subdivision."</td>
+								<td>".$old_item->add_prop_details."</td>
+								<td>".$old_item->add_cost."</td>
+								<td>".$old_item->add_present_value."</td>
+								<td>".$old_item->add_owner."</td>
+								<td>".$old_item->add_how_acquired."</td>
+								<td>".$old_item->add_annual_income."</td>
+								<td>".$old_item->add_remarks."</td></tr>";
+
+								echo "<tr><td colspan=8><strong>Returns for the current year</strong></td></tr>";
 							}
-
-
-							echo "<tr><td>".$old_item->add_subdivision."</td>
-							<td>".$old_item->add_prop_details."</td>
-							<td>".$old_item->add_cost."</td>
-							<td>".$old_item->add_present_value."</td>
-							<td>".$old_item->add_owner."</td>
-							<td>".$old_item->add_how_acquired."</td>
-							<td>".$old_item->add_annual_income."</td>
-							<td>".$old_item->add_remarks."</td></tr>";
-
-							echo "<tr><td colspan=8><strong>Returns for the current year</strong></td></tr>";
 
 							/*
 							returns for the current year
@@ -195,46 +198,47 @@
 						<?php 
 							$json = json_decode($property->movable_property);
 
-							$prev_year = json_decode($previous_property->movable_property);
+							if(isset($previous_property)){
+								$prev_year = json_decode($previous_property->movable_property);
 
-							echo "<tr><td colspan=5><strong>Returns from the previous year filed</strong></td></tr>";
+								echo "<tr><td colspan=5><strong>Returns from the previous year filed</strong></td></tr>";
 
-							/*
-							Returns for the previous year
-							*/
+								/*
+								Returns for the previous year
+								*/
 
-							if(isset($prev_year->movable_desc_old)){
-								$lngth=count($prev_year->movable_desc_old);
-								
-								for($i=0;$i<$lngth;$i++){
-									echo "<tr><td>".$prev_year->movable_desc_old[$i]."</td>
-									<td>".$prev_year->movable_price_old[$i]."</td><td>".$prev_year->movable_in_whose_name_old[$i]."</td>
-									<td>".$prev_year->movable_how_acq_old[$i]."</td><td>".$prev_year->movable_remarks_old[$i]."</td></tr>";
+								if(isset($prev_year->movable_desc_old)){
+									$lngth=count($prev_year->movable_desc_old);
+									
+									for($i=0;$i<$lngth;$i++){
+										echo "<tr><td>".$prev_year->movable_desc_old[$i]."</td>
+										<td>".$prev_year->movable_price_old[$i]."</td><td>".$prev_year->movable_in_whose_name_old[$i]."</td>
+										<td>".$prev_year->movable_how_acq_old[$i]."</td><td>".$prev_year->movable_remarks_old[$i]."</td></tr>";
+									}
 								}
-							}
 
-							if(isset($prev_year->movable_description)){
-								$lngth=count($prev_year->movable_description);
-								
-								for($i=0;$i<$lngth;$i++){
-									echo "<tr><td>".$prev_year->movable_description[$i]."</td>
-									<td>".$prev_year->movable_price[$i]."</td><td>".$prev_year->movable_in_whose_name[$i]."</td>
-									<td>".$prev_year->movable_how_acquired[$i]."</td><td>".$prev_year->movable_remarks[$i]."</td></tr>";
+								if(isset($prev_year->movable_description)){
+									$lngth=count($prev_year->movable_description);
+									
+									for($i=0;$i<$lngth;$i++){
+										echo "<tr><td>".$prev_year->movable_description[$i]."</td>
+										<td>".$prev_year->movable_price[$i]."</td><td>".$prev_year->movable_in_whose_name[$i]."</td>
+										<td>".$prev_year->movable_how_acquired[$i]."</td><td>".$prev_year->movable_remarks[$i]."</td></tr>";
+									}
 								}
+								echo "<tr><td>".$prev_year->add_movable_description."</td>
+								<td>".$prev_year->add_movable_price."</td>
+								<td>".$prev_year->add_movable_in_whose_name."</td>
+								<td>".$prev_year->add_movable_how_acquired."</td>
+								<td>".$prev_year->add_movable_remarks."</td></tr>";
+
+
+								/*
+								Returns for this year
+								*/
+								echo "<tr><td colspan=5><strong>Returns for the current year</strong></td></tr>";
+
 							}
-							echo "<tr><td>".$prev_year->add_movable_description."</td>
-							<td>".$prev_year->add_movable_price."</td>
-							<td>".$prev_year->add_movable_in_whose_name."</td>
-							<td>".$prev_year->add_movable_how_acquired."</td>
-							<td>".$prev_year->add_movable_remarks."</td></tr>";
-
-
-							/*
-							Returns for this year
-							*/
-							echo "<tr><td colspan=5><strong>Returns for the current year</strong></td></tr>";
-
-
 							if(isset($json->movable_desc_old)){
 								$lngth=count($json->movable_desc_old);
 								

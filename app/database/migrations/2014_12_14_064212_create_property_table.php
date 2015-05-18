@@ -14,7 +14,7 @@ class CreatePropertyTable extends Migration {
 	{
 		Schema::create('property',function(Blueprint $table){
 			$table->increments('id');
-			$table->string('users_id');
+			$table->integer('users_id')->unsigned();
 			$table->string('service');
 			$table->string('present_place_of_posting',100);
 			$table->integer('basic_pay');
@@ -26,6 +26,8 @@ class CreatePropertyTable extends Migration {
 			$table->longtext('immovable_property');
 			$table->enum('status',['Submitted','Examined','Approved','Rejected']);
 			$table->timestamps();
+
+			$table->foreign('users_id')->references('id')->on('users');
 		});
 	}
 

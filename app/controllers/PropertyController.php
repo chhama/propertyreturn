@@ -37,14 +37,19 @@ class PropertyController extends \BaseController {
 	public function create()
 	{
 		$latest_year_filed = DB::table("property")->where("users_id","=",Auth::user()->id)->select('returns_year')->orderBy('returns_year','desc')->first();
-
-		$old_immovable = Property::where('returns_year','=',$latest_year_filed->returns_year)->where('users_id',"=",Auth::user()->id)->pluck('immovable_property');
-		$old_movable = Property::where('returns_year','=',$latest_year_filed->returns_year)->where('users_id',"=",Auth::user()->id)->pluck('movable_property');
+		if($latest_year_filed==NULL)
+			$returns_year=date('Y');
+		else
+			$returns_year=$latest_year_filed->returns_year;
+		// dd($latest_year_filed);
+		$old_immovable = Property::where('returns_year','=',$returns_year)->where('users_id',"=",Auth::user()->id)->pluck('immovable_property');
+		$old_movable = Property::where('returns_year','=',$returns_year)->where('users_id',"=",Auth::user()->id)->pluck('movable_property');
+		
 		//->where('id','=',Auth::user()->id)->get();
 		// $old_property_json=json_decode($old_property);
 		// $pp=json_decode ($old_property_json[0]->movable_property);
 		
-		if ($latest_year_filed != NULL && $latest_year_filed->returns_year == date('Y'))
+		if ($latest_year_filed != NULL && $returns_year == date('Y'))
 			return View::make('returns/submitted');		
 		else 
 			return View::make('returns/create',compact('old_movable','old_immovable'));
@@ -95,7 +100,7 @@ class PropertyController extends \BaseController {
 			$user = User::find(Auth::user()->id);
 			$user->last_filed_year = date("Y-m-d H:i:s");
 			if($property->save() && $user->save())
-				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Property Returns submitted successfully.</div>']);
+				return Redirect::back()->with(['flash_message'=>'Property Returns submitted successfully.']);
 			else
 				return Redirect::back()->with(['flash_message'=>'<div class="alert alert-success alert-warning"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>Property Returns submission failed.</div>']);
 
@@ -192,8 +197,10 @@ class PropertyController extends \BaseController {
     public function pendingreturns()
     {
     	$pendingReturns = Property::where("status",'=','Submitted')->orderBy('created_at')->paginate(10);
-
-    	return View::make('returns.pending')->with(['pendingReturns'=>$pendingReturns]);
+    	// $user=Property::find(1)->user->name;
+    	// print_r($user);
+    	// exit;
+    	return View::make('returns.pending',compact('pendingReturns'));
     }
 
     public function examine($id)
@@ -203,8 +210,12 @@ class PropertyController extends \BaseController {
     	$officer = User::find($userid);
     	$this_year=$property->returns_year;
     	$previous_property=Property::where('users_id','=',$userid)->where('returns_year','!=',$this_year)->orderBy('returns_year','desc')->first();
-    	// dd($previous_property);
+    	 // dd($userid);
+    	 if($previous_property!=NULL)
     	return View::make('returns.examine',compact('property','officer','previous_property'));
+    	else
+    	return View::make('returns.examine',compact('property','officer'));
+
     }
 
     public function finalize()

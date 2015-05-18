@@ -266,6 +266,20 @@
 
                                                         }
                                                     }
+
+                                                     if(isset($old_movable->movable_description)){
+                                                        for($i=0;$i<count($old_movable->movable_description);$i++) {
+                                                            echo "<tr id='old_move".$i."'><td><input type='text' name='movable_desc_old[]' value='".$old_movable->movable_description[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_price_old[]' value='".$old_movable->movable_price[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_in_whose_name_old[]' value='".$old_movable->movable_in_whose_name[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_how_acq_old[]' value='".$old_movable->movable_how_acquired[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><input type='text' name='movable_remarks_old[]' value='".$old_movable->movable_remarks[$i]."' readonly class='nobg' size=10></td>
+                                                            <td><button class='btn btn-sm btn-danger text-alert fa fa-trash-o fa-sm' onclick='deleteMovableRow(this)'> Remove</button></td></tr>";
+
+                                                        }
+                                                    }
+
+
                                                     if(isset($old_movable->add_movable_description)){
                                                         echo "<tr><td><input type='text' name='movable_desc_old[]' value='".$old_movable->add_movable_description."' readonly class='nobg' size=10></td>
                                                         <td><input type='text' name='movable_price_old[]' value='".$old_movable->add_movable_price."' readonly class='nobg' size=10></td>

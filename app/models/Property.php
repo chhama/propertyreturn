@@ -16,4 +16,8 @@ class Property extends Eloquent {
 	 * @var array
 	 */
 
+	public function user(){
+		return $this->belongsTo('User','users_id');
+	}
+
 }

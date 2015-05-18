@@ -15,6 +15,7 @@
                 <div class="col-lg-12 text-center">
                     <h3>Pending Returns</h3>
                     <!-- <hr class="star-primary"> -->
+
                 </div>
             </div>
             <div class="row" >
@@ -23,7 +24,7 @@
                             <thead>
                                 <tr id='returnstr'>
                                     <th><strong>#</strong></th>
-                                    <th><strong>Officers</strong></th>
+                                    <th><strong>Officer's Name</strong></th>
                                     <th><strong>Service</strong></th>
                                     <th><strong>Present Post</strong></th>
                                     <th><strong>Posting Place</strong></th>
@@ -36,7 +37,7 @@
                                 @foreach($pendingReturns as $property)
                                 <tr>
                                     <td>{{$slno}}</td>
-                                    <td>{{$property->users_id}}</td>
+                                    <td>{{$property->user->name}}</td>
                                     <td>{{$property->service}}</td>
                                     <td>{{$property->present_post}}</td>
                                     <td id='mymy'>{{$property->present_place_of_posting}}</td>
