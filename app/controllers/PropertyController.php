@@ -36,7 +36,7 @@ class PropertyController extends \BaseController {
 	 */
 	public function create()
 	{
-		$latest_year_filed = DB::table("property")->where("users_id","=",Auth::user()->id)->select('returns_year')->orderBy('returns_year','desc')->first();
+		$latest_year_filed = DB::table("property")->where("users_id","=",Auth::user()->id)->select('returns_year','status')->orderBy('returns_year','desc')->first();
 		if($latest_year_filed==NULL)
 			$returns_year=date('Y');
 		else
@@ -49,7 +49,7 @@ class PropertyController extends \BaseController {
 		// $old_property_json=json_decode($old_property);
 		// $pp=json_decode ($old_property_json[0]->movable_property);
 		
-		if ($latest_year_filed != NULL && $returns_year == date('Y'))
+		if ($latest_year_filed != NULL && $returns_year == date('Y') && $latest_year_filed->status != 'Rejected')
 			return View::make('returns/submitted');		
 		else 
 			return View::make('returns/create',compact('old_movable','old_immovable'));
@@ -90,7 +90,7 @@ class PropertyController extends \BaseController {
 				'basic_pay' => 'required',
 				'present_post' => 'required',
 				'pay_band' => 'required',
-				'enolument' => 'required|numeric']
+				'enolument' => 'required']
 			);
 
 			if($validator->fails()){

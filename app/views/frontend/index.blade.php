@@ -85,66 +85,70 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-building-o fa-2x"></i> Select a Department
                             </div>
                         </div>
                         <img src="img/icons/cabin.png" class="img-responsive" alt="">
-                    </a>
+                    </a> 
+                    <div class="text-center"> Select a Department </div>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-user fa-2x"></i> Select an employee
                             </div>
                         </div>
-                        <img src="img/icons/cake.png" class="img-responsive" alt="">
+                        <img src="img/icons/cake.png" class="img-responsive" alt=""> 
                     </a>
+                    <div class="text-center">Select an employee</div>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-calendar fa-2x"></i> Select the returns year
                             </div>
                         </div>
-                        <img src="img/icons/circus.png" class="img-responsive" alt="">
+                        <img src="img/icons/circus.png" class="img-responsive" alt=""> 
                     </a>
+                    <div class="text-center">Select the returns year</div>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <!-- <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-2x"></i>
                             </div>
                         </div>
                         <img src="img/icons/game.png" class="img-responsive" alt="">
                     </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
+                </div> -->
+                <div class="col-sm-6 portfolio-item">
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-file-text fa-2x"></i> The returns statement is displayed
                             </div>
                         </div>
-                        <img src="img/icons/safe.png" class="img-responsive" alt="">
+                        <img src="img/icons/safe.png" class="img-responsive" alt=""> The returns statement is displayed
                     </a>
+                    <div class="text-center">The returns statement is displayed</div>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <!-- <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-2x"></i>
                             </div>
                         </div>
                         <img src="img/icons/submarine.png" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

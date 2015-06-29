@@ -32,10 +32,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+                    @if(Session::has('flash_message'))
+                        <div>
+                            <h2>{{ Session::get('flash_message') }}</h2>
+                        </div>
+                    @endif
                     <div class="intro-text">
                         <span class="formheader-small">File your returns </span>
                     </div>
-                    
                     {{Form::open(['route'=>'property.store','method'=>'POST','id'=>'returns_form','class'=>'form-horizontal'])}}
                         <div class="col-md-6 tp10">
                             
@@ -310,13 +314,13 @@
                         
                         <!-- OTP -->
                         
-                           <!--  <div class="col-md-2">
+                            <div class="col-md-2">
                                 <button type="button" onclick="return interactionRequestOTP()" id="interaction_request_otp" class="btn btn-info"><i class="fa fa-clock-o fa-lg"></i> Generate OTP </button>
                             </div>
                             <div class="col-md-2">
                                     {{Form::text('otp',Input::old('otp'),['placeholder'=>'Enter OTP','id'=>'otp','class'=>'form-control hidden','required'])}}
                             </div>
- -->                        
+                        
                         <div class="col-md-2">
                                 {{Form::Submit('Submit',['id'=>'submitbutton','class'=>'btn btn-primary form-control ','style'=>'width:120px;'])}}
                         </div>
@@ -362,33 +366,33 @@
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x"></i> Fill all your personal information
                             </div>
                         </div>
-                        <img src="../img/icons/cabin.png" class="img-responsive" alt="">
+                        <img src="../img/icons/personalinfo.png" class="img-responsive" alt="">Fill all your personal information
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x"></i> Enter your immovable assets
                             </div>
                         </div>
-                        <img src="../img/icons/cake.png" class="img-responsive" alt="">
+                        <img src="../img/icons/immovable.png" class="img-responsive" alt=""> Enter your immovable assets
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x"></i> Enter your movable assets
                             </div>
                         </div>
-                        <img src="../img/icons/circus.png" class="img-responsive" alt="">
+                        <img src="../img/icons/movable.png" class="img-responsive" alt=""> Enter your movable assets
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <!-- <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -417,7 +421,7 @@
                         </div>
                         <img src="../img/icons/submarine.png" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
