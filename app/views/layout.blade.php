@@ -85,6 +85,9 @@
                     @endif
                     @if(Auth::user()->user_type == 'superadmin' || Auth::user()->user_type == 'admin')
                     <li class="page-scroll">
+                        <a href="{{ URL::to('/')}}">Home</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="{{ URL::route('dashboard.index')}}">Dashboard</a>
                     </li>
                     <li class="page-scroll">
